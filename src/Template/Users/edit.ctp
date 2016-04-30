@@ -31,7 +31,7 @@
         <?php
             echo $this->Form->input('name');
             echo $this->Form->input('email');
-            echo $this->Form->input('password');
+            echo $this->Form->input('password', ['value' => '']);
             echo $this->Form->input('company_id');
         ?>
     </fieldset>

@@ -105,4 +105,44 @@ class UsersController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * Login method
+     *
+     * @return void Redirects to Auth component redirect URL
+     */
+    public function login()
+    {
+
+        //$this->viewBuilder()->layout(false);
+
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+
+                // Get user permissions
+                /*
+                $user_data = $this->Users->get($user['id'], ['contain' => ['Permissions']]);
+                if (!empty($user_data->permissions)) {
+                    foreach ($user_data->permissions as $permission) {
+                        $user['permissions'][] = $permission->get('path');    
+                    }
+                }
+                */
+
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
+
+
+            } else {
+                $this->Flash->error(
+                    __('Invalid username or password.'),
+                    'default',
+                    [],
+                    'auth'
+                );
+            }
+        }
+    }
+
 }
