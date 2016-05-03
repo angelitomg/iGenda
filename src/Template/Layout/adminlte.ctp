@@ -1,7 +1,6 @@
 <?php use \Cake\Core\Configure; ?>
 <?php
     $controller = $this->request->params['controller'];
-    echo '<h1>' . $controller . '</h1>';
 ?>
 <!DOCTYPE html>
 <!--

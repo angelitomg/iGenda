@@ -90,7 +90,7 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->allowEmpty('password', 'update');
 
         return $validator;
     }

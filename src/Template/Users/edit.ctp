@@ -1,40 +1,51 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Companies'), ['controller' => 'Companies', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Company'), ['controller' => 'Companies', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Activities'), ['controller' => 'Activities', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Activity'), ['controller' => 'Activities', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Activity Types'), ['controller' => 'ActivityTypes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Activity Type'), ['controller' => 'ActivityTypes', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Client Services'), ['controller' => 'ClientServices', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Client Service'), ['controller' => 'ClientServices', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Services'), ['controller' => 'Services', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Service'), ['controller' => 'Services', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List User Permissions'), ['controller' => 'UserPermissions', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User Permission'), ['controller' => 'UserPermissions', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Edit User') ?></legend>
-        <?php
-            echo $this->Form->input('name');
-            echo $this->Form->input('email');
-            echo $this->Form->input('password', ['value' => '']);
-            echo $this->Form->input('company_id');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+<?php $this->assign('title', __('Edit User')); ?>
+<div class="row">
+
+    <?= $this->Form->create($user); ?>
+
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <div class="box-body">
+
+            <div class="form-group">
+                <?= $this->Form->input('name', ['class' => 'form-control']) ?>
+            </div>
+
+            <div class="form-group">
+                <?= $this->Form->input('email', ['class' => 'form-control']) ?>
+            </div>
+
+            <div class="form-group">
+                <?= $this->Form->input('password', ['class' => 'form-control', 'value' => '']) ?>
+            </div>
+
+        </div><!-- /.box-body -->
+        <div class="box-footer">
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+        </div>
+      </div><!-- /.box -->
+
+    </div><!-- /.col (left) -->
+
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <div class="box-body">
+
+            <?php
+                echo $this->Form->input(
+                    'permissions._ids', 
+                    [
+                        'options' => $permissions, 
+                        'multiple' => 'checkbox', 
+                        'label' => ['text' => __('Permissions'), 'class' => 'label-association']]
+                );
+            ?>
+
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+
+    </div><!-- /.col (right) -->
+
     <?= $this->Form->end() ?>
+
 </div>

@@ -32,4 +32,5 @@ class ActivityType extends Entity
         '*' => true,
         'id' => false,
     ];
+
 }

@@ -27,4 +27,9 @@ class Permission extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    protected function _getName()
+    {
+        return __($this->_properties['name']);
+    }
 }
