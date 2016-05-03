@@ -167,10 +167,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `user_permissions`
+-- Estrutura da tabela `users_permissions`
 --
 
-CREATE TABLE IF NOT EXISTS `user_permissions` (
+CREATE TABLE IF NOT EXISTS `users_permissions` (
   `id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `permission_id` int(10) unsigned NOT NULL,
@@ -231,9 +231,9 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`), ADD KEY `company_id` (`company_id`);
 
 --
--- Indexes for table `user_permissions`
+-- Indexes for table `users_permissions`
 --
-ALTER TABLE `user_permissions`
+ALTER TABLE `users_permissions`
   ADD PRIMARY KEY (`id`), ADD KEY `permission_id` (`permission_id`), ADD KEY `user_id` (`user_id`);
 
 --
@@ -261,6 +261,11 @@ ALTER TABLE `clients`
 ALTER TABLE `client_services`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `companies`
+--
+ALTER TABLE `companies`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
@@ -276,9 +281,9 @@ ALTER TABLE `services`
 ALTER TABLE `users`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `user_permissions`
+-- AUTO_INCREMENT for table `users_permissions`
 --
-ALTER TABLE `user_permissions`
+ALTER TABLE `users_permissions`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
@@ -330,11 +335,11 @@ ALTER TABLE `users`
 ADD CONSTRAINT `fk_users_company_id` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limitadores para a tabela `user_permissions`
+-- Limitadores para a tabela `users_permissions`
 --
-ALTER TABLE `user_permissions`
-ADD CONSTRAINT `fk_user_permissions_permissions_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_user_permissions_users_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `users_permissions`
+ADD CONSTRAINT `fk_users_permissions_permissions_permission_id` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_users_permissions_users_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

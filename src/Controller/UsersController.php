@@ -58,7 +58,8 @@ class UsersController extends AppController
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('user'));
+        $permissions = $this->Users->Permissions->find('list', ['limit' => 200]);
+        $this->set(compact('user', 'permissions'));
         $this->set('_serialize', ['user']);
     }
 
@@ -114,7 +115,7 @@ class UsersController extends AppController
     public function login()
     {
 
-        //$this->viewBuilder()->layout(false);
+        $this->viewBuilder()->layout(false);
 
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
@@ -143,6 +144,16 @@ class UsersController extends AppController
                 );
             }
         }
+    }
+
+    /**
+     * Logout method
+     *
+     * @return void Redirects to Auth component logout URL
+     */
+    public function logout()
+    {
+        return $this->redirect($this->Auth->logout());
     }
 
 }

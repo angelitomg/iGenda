@@ -60,8 +60,10 @@ class UsersTable extends Table
         $this->hasMany('Services', [
             'foreignKey' => 'user_id'
         ]);
-        $this->hasMany('UserPermissions', [
-            'foreignKey' => 'user_id'
+        $this->belongsToMany('Permissions', [
+            'foreignKey' => 'user_id',
+            'targetForeignKey' => 'permission_id',
+            'joinTable' => 'users_permissions'
         ]);
     }
 

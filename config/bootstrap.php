@@ -220,3 +220,9 @@ Type::build('date')
 Type::build('datetime')
     ->useImmutable()
     ->useLocaleParser();
+
+/**
+ * Extra configs
+ */
+Configure::write('System.title', 'iGenda');
+Configure::write('System.version', '0.1');

@@ -52,6 +52,8 @@ class AppController extends Controller
             ]
         ]);
 
+        $this->viewBuilder()->layout('adminlte');
+
     }
 
     /**
