@@ -13,10 +13,8 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 ?>
-<?php
-$content = explode("\n", $content);
-
-foreach ($content as $line):
-    echo '<p> ' . $line . "</p>\n";
-endforeach;
-?>
+<div style="width: 500px; margin: 0 auto; text-align: center;">
+	<p><img alt="logo" title="logo" src="<?= $this->Url->build('/', true) ?>img/igenda-logo-email.png" /></p>
+	<h1 style="font-size: 16px; font-weight: bold;"><?= $title ?></h1>
+	<p><?= $description ?></p>
+</div>

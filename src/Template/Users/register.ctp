@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?= Configure::read('System.title') ?> | <?= __('Log in') ?></title>
+  <title><?= Configure::read('System.title') ?> | <?= __('Register a new membership') ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -25,19 +25,23 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
+<body class="hold-transition register-page">
+<div class="register-box">
+  <div class="register-logo">
     <a href="<?= $this->Url->build('/') ?>"><i class="fa fa-book"></i> &nbsp;<b>i</b>Genda</a>
   </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg"><?= __('Sign in to start your session') ?></p>
+
+  <div class="register-box-body">
+    <p class="login-box-msg"><?= __('Register a new membership') ?></p>
 
     <?= $this->Form->create(); ?>
 
       <?= $this->Flash->render() ?>
 
+      <div class="form-group has-feedback">
+        <?= $this->Form->input('company_name', ['label' => false, 'class' => 'form-control', 'placeholder' => __('Company Name')]) ?>
+        <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
+      </div>
       <div class="form-group has-feedback">
         <?= $this->Form->input('email', ['label' => false, 'class' => 'form-control', 'placeholder' => __('Email')]) ?>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -47,28 +51,38 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        <div class="col-xs-8">
+
+        <!--
+        <div class="col-xs-6">          
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> <?= __('Remember Me') ?>
+              <input type="checkbox"> I agree to the <a href="#">terms</a>
             </label>
           </div>
         </div>
+        -->
+        
         <!-- /.col -->
-        <div class="col-xs-4">
-          <?= $this->Form->button(__('Sign in'), ['class' => 'btn btn-primary btn-block btn-flat']) ?>
+
+        <div class="col-xs-12 text-center">
+          <p>
+            <?= $this->Form->button(__('Register Now'), ['class' => 'btn btn-primary btn-block btn-flat']) ?>
+          </p>
         </div>
         <!-- /.col -->
       </div>
     <?= $this->Form->end() ?>
 
-    <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'recovery_password']) ?>"><?= __('I forgot my password') ?></a><br>
-    <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'register']) ?>" class="text-center"><?= __('Register a new membership') ?></a>
+    <p> 
+      <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'login']) ?>">
+        <?php __('I already have a membership'); ?>
+      </a>
+    </p>
 
   </div>
-  <!-- /.login-box-body -->
+  <!-- /.form-box -->
 </div>
-<!-- /.login-box -->
+<!-- /.register-box -->
 
 <!-- jQuery 2.2.0 -->
 <script src="<?= $this->Url->build('/') ?>/bower_components/AdminLTE/plugins/jQuery/jQuery-2.2.0.min.js"></script>

@@ -226,3 +226,14 @@ Type::build('datetime')
  */
 Configure::write('System.title', 'iGenda');
 Configure::write('System.version', '0.1');
+Configure::write('System.default_from_email', 'angelito@amglabs.net');
+
+/**
+ * Utility functions
+ */
+function get_company_id() {
+    $company_id = (isset($_SESSION['Auth']['User']['company_id']))
+        ? $_SESSION['Auth']['User']['company_id']
+        : 0;
+    return $company_id;
+}

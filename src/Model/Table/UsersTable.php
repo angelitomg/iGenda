@@ -108,4 +108,9 @@ class UsersTable extends Table
         $rules->add($rules->existsIn(['company_id'], 'Companies'));
         return $rules;
     }
+
+    public function beforeSave($event, $entity, $options){
+        $entity->company_id = get_company_id();
+    }
+
 }

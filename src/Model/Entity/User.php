@@ -37,6 +37,9 @@ class User extends Entity
     protected $_accessible = [
         '*' => true,
         'id' => false,
+        'company_id' => false,
+        'user_id' => false,
+        'activated' => false
     ];
 
     /**
@@ -59,11 +62,5 @@ class User extends Entity
         return (!empty($password)) ? (new DefaultPasswordHasher)->hash($password) : $this->get('password');
     }
 
-    public function beforeFind(Event $event, Query $query, array $options)
-    {
-        print_r($event);
-        print_r($query);
-        print_r($options);
-    }
 
 }
