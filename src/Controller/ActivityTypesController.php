@@ -18,30 +18,12 @@ class ActivityTypesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users', 'Companies']
-        ];
-        $activityTypes = $this->paginate($this->ActivityTypes);
+
+        $query = $this->ActivityTypes->find()->where(['company_id' => get_company_id()]);
+        $activityTypes = $this->paginate($query);
 
         $this->set(compact('activityTypes'));
         $this->set('_serialize', ['activityTypes']);
-    }
-
-    /**
-     * View method
-     *
-     * @param string|null $id Activity Type id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $activityType = $this->ActivityTypes->get($id, [
-            'contain' => ['Users', 'Companies', 'Activities']
-        ]);
-
-        $this->set('activityType', $activityType);
-        $this->set('_serialize', ['activityType']);
     }
 
     /**
@@ -61,9 +43,7 @@ class ActivityTypesController extends AppController
                 $this->Flash->error(__('The activity type could not be saved. Please, try again.'));
             }
         }
-        $users = $this->ActivityTypes->Users->find('list', ['limit' => 200]);
-        $companies = $this->ActivityTypes->Companies->find('list', ['limit' => 200]);
-        $this->set(compact('activityType', 'users', 'companies'));
+        $this->set(compact('activityType'));
         $this->set('_serialize', ['activityType']);
     }
 
@@ -76,9 +56,12 @@ class ActivityTypesController extends AppController
      */
     public function edit($id = null)
     {
-        $activityType = $this->ActivityTypes->get($id, [
-            'contain' => []
-        ]);
+
+        $activityType = $this->ActivityTypes->find('all')
+            ->where(['ActivityTypes.id' => $id, 'ActivityTypes.company_id ' => get_company_id()])
+            ->first();
+        if (empty($user)) $this->redirect('/');
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $activityType = $this->ActivityTypes->patchEntity($activityType, $this->request->data);
             if ($this->ActivityTypes->save($activityType)) {
@@ -88,9 +71,7 @@ class ActivityTypesController extends AppController
                 $this->Flash->error(__('The activity type could not be saved. Please, try again.'));
             }
         }
-        $users = $this->ActivityTypes->Users->find('list', ['limit' => 200]);
-        $companies = $this->ActivityTypes->Companies->find('list', ['limit' => 200]);
-        $this->set(compact('activityType', 'users', 'companies'));
+        $this->set(compact('activityType'));
         $this->set('_serialize', ['activityType']);
     }
 
@@ -103,8 +84,13 @@ class ActivityTypesController extends AppController
      */
     public function delete($id = null)
     {
+
         $this->request->allowMethod(['post', 'delete']);
-        $activityType = $this->ActivityTypes->get($id);
+
+        $activityType = $this->ActivityTypes->find('all')
+            ->where(['ActivityTypes.id' => $id, 'ActivityTypes.company_id ' => get_company_id()])
+            ->first();
+
         if ($this->ActivityTypes->delete($activityType)) {
             $this->Flash->success(__('The activity type has been deleted.'));
         } else {

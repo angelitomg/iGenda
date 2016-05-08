@@ -83,4 +83,19 @@ class ServicesTable extends Table
         $rules->add($rules->existsIn(['company_id'], 'Companies'));
         return $rules;
     }
+
+    /**
+     * Before save method
+     *
+     */
+    public function beforeSave($event, $entity, $options){
+
+        // Only on create
+        if ($entity->isNew()) {
+            $entity->company_id = get_company_id();    
+            $entity->user_id = get_user_id(); 
+        }
+
+    }
+
 }

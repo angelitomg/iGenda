@@ -237,3 +237,10 @@ function get_company_id() {
         : 0;
     return $company_id;
 }
+
+function get_user_id() {
+    $user_id = (isset($_SESSION['Auth']['User']['id']))
+        ? $_SESSION['Auth']['User']['id']
+        : 0;
+    return $user_id;
+}

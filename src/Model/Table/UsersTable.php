@@ -109,8 +109,17 @@ class UsersTable extends Table
         return $rules;
     }
 
+    /**
+     * Before save method
+     *
+     */
     public function beforeSave($event, $entity, $options){
-        $entity->company_id = get_company_id();
+
+        // Only on create
+        if ($entity->isNew()) {
+            $entity->company_id = get_company_id();    
+        }
+
     }
 
 }

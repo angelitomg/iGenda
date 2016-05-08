@@ -66,7 +66,6 @@ class UsersController extends AppController
                     ->where(['Users.id' => $id, 'Users.company_id ' => get_company_id()])
                     ->contain(['Permissions'])
                     ->first();
-
         if (empty($user)) $this->redirect('/');
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -94,6 +93,7 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
+      
         $this->request->allowMethod(['post', 'delete']);
         
         $user = $this->Users->find('all')
@@ -357,9 +357,9 @@ class UsersController extends AppController
      * Setup new user account method
      *
      */
-    private function _setupNewUserAccount($user);
+    private function _setupNewUserAccount($user)
     {
-
+        return true;
     }
 
 }
