@@ -125,6 +125,15 @@ class UsersController extends AppController
             $email = (isset($this->request->data['email'])) ? $this->request->data['email'] : '';
             $password = (isset($this->request->data['password'])) ? $this->request->data['password'] : '';
 
+            // Check if user already exists
+             $userTmp = $this->Users->find('all')
+                    ->where(['Users.email' => $email])
+                    ->first();
+            if (!empty($userTmp)) {
+                $this->Flash->error(__('The email already exists in our database. You can recovery your password by entering your email address. '));
+                return $this->redirect(['controller' => 'Users', 'action' => 'recoveryPassword']);
+            }
+
             // Create company
             $companiesTable = TableRegistry::get('Companies');
             $company = $companiesTable->newEntity();
@@ -146,7 +155,7 @@ class UsersController extends AppController
             $companiesTable->save($company);
 
             // Setup new user account
-            $this->_setupNewUserAccount();
+            $this->_setupNewUserAccount($user);
 
             // Build email message
             $url = Router::url(['controller' => 'Users', 'action' => 'confirm', $user->token], true );
@@ -186,8 +195,8 @@ class UsersController extends AppController
         $this->viewBuilder()->layout(false);
 
         // Allow only if user not logged
-        print_r($this->Auth->user());
-        die();
+        //print_r($this->Auth->user());
+        //die();
         //if ($this->Auth->user()) $this->redirect('/');
 
         if ($this->request->is('post')) {

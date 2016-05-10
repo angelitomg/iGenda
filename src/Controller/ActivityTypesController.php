@@ -60,7 +60,7 @@ class ActivityTypesController extends AppController
         $activityType = $this->ActivityTypes->find('all')
             ->where(['ActivityTypes.id' => $id, 'ActivityTypes.company_id ' => get_company_id()])
             ->first();
-        if (empty($user)) $this->redirect('/');
+        if (empty($activityType)) $this->redirect('/');
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $activityType = $this->ActivityTypes->patchEntity($activityType, $this->request->data);

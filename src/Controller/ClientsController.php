@@ -18,10 +18,9 @@ class ClientsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users', 'Companies']
-        ];
-        $clients = $this->paginate($this->Clients);
+
+        $query = $this->Clients->find()->where(['company_id' => get_company_id()]);
+        $clients = $this->paginate($query);
 
         $this->set(compact('clients'));
         $this->set('_serialize', ['clients']);
@@ -36,9 +35,11 @@ class ClientsController extends AppController
      */
     public function view($id = null)
     {
-        $client = $this->Clients->get($id, [
-            'contain' => ['Users', 'Companies', 'Activities', 'ClientServices']
-        ]);
+
+        $client = $this->Clients->find('all')
+            ->where(['Clients.id' => $id, 'Clients.company_id ' => get_company_id()])
+            ->first();
+        if (empty($client)) $this->redirect('/');
 
         $this->set('client', $client);
         $this->set('_serialize', ['client']);
@@ -61,9 +62,7 @@ class ClientsController extends AppController
                 $this->Flash->error(__('The client could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Clients->Users->find('list', ['limit' => 200]);
-        $companies = $this->Clients->Companies->find('list', ['limit' => 200]);
-        $this->set(compact('client', 'users', 'companies'));
+        $this->set(compact('client'));
         $this->set('_serialize', ['client']);
     }
 
@@ -76,9 +75,12 @@ class ClientsController extends AppController
      */
     public function edit($id = null)
     {
-        $client = $this->Clients->get($id, [
-            'contain' => []
-        ]);
+
+        $client = $this->Clients->find('all')
+            ->where(['Clients.id' => $id, 'Clients.company_id ' => get_company_id()])
+            ->first();
+        if (empty($client)) $this->redirect('/');
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $client = $this->Clients->patchEntity($client, $this->request->data);
             if ($this->Clients->save($client)) {
@@ -88,9 +90,7 @@ class ClientsController extends AppController
                 $this->Flash->error(__('The client could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Clients->Users->find('list', ['limit' => 200]);
-        $companies = $this->Clients->Companies->find('list', ['limit' => 200]);
-        $this->set(compact('client', 'users', 'companies'));
+        $this->set(compact('client'));
         $this->set('_serialize', ['client']);
     }
 
@@ -103,7 +103,14 @@ class ClientsController extends AppController
      */
     public function delete($id = null)
     {
+        
         $this->request->allowMethod(['post', 'delete']);
+
+        $client = $this->Clients->find('all')
+            ->where(['Clients.id' => $id, 'Clients.company_id ' => get_company_id()])
+            ->first();
+        if (empty($client)) $this->redirect('/');
+
         $client = $this->Clients->get($id);
         if ($this->Clients->delete($client)) {
             $this->Flash->success(__('The client has been deleted.'));

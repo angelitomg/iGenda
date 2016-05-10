@@ -40,7 +40,7 @@
 
       <div class="form-group has-feedback">
         <?= $this->Form->input('email', ['label' => false, 'class' => 'form-control', 'placeholder' => __('Email')]) ?>
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="row">
 

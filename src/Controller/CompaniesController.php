@@ -11,56 +11,6 @@ use App\Controller\AppController;
 class CompaniesController extends AppController
 {
 
-    /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
-    public function index()
-    {
-        $companies = $this->paginate($this->Companies);
-
-        $this->set(compact('companies'));
-        $this->set('_serialize', ['companies']);
-    }
-
-    /**
-     * View method
-     *
-     * @param string|null $id Company id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $company = $this->Companies->get($id, [
-            'contain' => ['Users', 'Activities', 'ActivityTypes', 'ClientServices', 'Clients', 'Services']
-        ]);
-
-        $this->set('company', $company);
-        $this->set('_serialize', ['company']);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $company = $this->Companies->newEntity();
-        if ($this->request->is('post')) {
-            $company = $this->Companies->patchEntity($company, $this->request->data);
-            if ($this->Companies->save($company)) {
-                $this->Flash->success(__('The company has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The company could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('company'));
-        $this->set('_serialize', ['company']);
-    }
 
     /**
      * Edit method
@@ -71,14 +21,17 @@ class CompaniesController extends AppController
      */
     public function edit($id = null)
     {
-        $company = $this->Companies->get($id, [
-            'contain' => []
-        ]);
+        
+        $company = $this->Companies->find('all')
+            ->where(['Companies.id ' => get_company_id()])
+            ->first();
+        if (empty($company)) $this->redirect('/');
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $company = $this->Companies->patchEntity($company, $this->request->data);
             if ($this->Companies->save($company)) {
                 $this->Flash->success(__('The company has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect('/');
             } else {
                 $this->Flash->error(__('The company could not be saved. Please, try again.'));
             }
@@ -87,22 +40,4 @@ class CompaniesController extends AppController
         $this->set('_serialize', ['company']);
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Company id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $company = $this->Companies->get($id);
-        if ($this->Companies->delete($company)) {
-            $this->Flash->success(__('The company has been deleted.'));
-        } else {
-            $this->Flash->error(__('The company could not be deleted. Please, try again.'));
-        }
-        return $this->redirect(['action' => 'index']);
-    }
 }
