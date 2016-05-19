@@ -25,6 +25,30 @@ use Cake\ORM\Entity;
 class Activity extends Entity
 {
 
+    const ACTIVITY_STATUS_PENDING = 10;
+    const ACTIVITY_STATUS_IN_PROGRESS = 20;
+    const ACTIVITY_STATUS_WAITING = 30;
+    const ACTIVITY_STATUS_COMPLETE = 40;
+
+    protected $statusList = [
+        self::ACTIVITY_STATUS_PENDING => 'Pending', 
+        self::ACTIVITY_STATUS_IN_PROGRESS => 'In Progress',
+        self::ACTIVITY_STATUS_WAITING => 'Waiting',
+        self::ACTIVITY_STATUS_COMPLETE => 'Complete'
+    ];
+
+    public function getStatusList(){
+        $status = [];
+        foreach ($this->statusList as $type => $message){
+            $status[$type] = __($message);
+        }
+        return $status;
+    }
+
+    public function getStatus($status){
+        return (isset($this->statusList[$status])) ? __($this->statusList[$status]) : '';
+    }
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

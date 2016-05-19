@@ -18,10 +18,9 @@ class ActivitiesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Clients', 'ActivityTypes', 'Users', 'Companies']
-        ];
-        $activities = $this->paginate($this->Activities);
+
+        $query = $this->Activities->find()->contain(['Clients', 'ActivityTypes'])->where(['Activities.company_id' => get_company_id()]);
+        $activities = $this->paginate($query);
 
         $this->set(compact('activities'));
         $this->set('_serialize', ['activities']);
@@ -36,9 +35,12 @@ class ActivitiesController extends AppController
      */
     public function view($id = null)
     {
-        $activity = $this->Activities->get($id, [
-            'contain' => ['Clients', 'ActivityTypes', 'Users', 'Companies']
-        ]);
+
+        $activity = $this->Activities->find('all')
+            ->contain(['Clients', 'ActivityTypes', 'Users'])
+            ->where(['Activities.id' => $id, 'Activities.company_id ' => get_company_id()])
+            ->first();
+        if (empty($activity)) $this->redirect('/');
 
         $this->set('activity', $activity);
         $this->set('_serialize', ['activity']);
@@ -78,9 +80,12 @@ class ActivitiesController extends AppController
      */
     public function edit($id = null)
     {
-        $activity = $this->Activities->get($id, [
-            'contain' => []
-        ]);
+
+        $activity = $this->Activities->find('all')
+            ->where(['Activities.id' => $id, 'Activities.company_id ' => get_company_id()])
+            ->first();
+        if (empty($activity)) $this->redirect('/');
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $activity = $this->Activities->patchEntity($activity, $this->request->data);
             if ($this->Activities->save($activity)) {
@@ -108,7 +113,12 @@ class ActivitiesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $activity = $this->Activities->get($id);
+
+        $activity = $this->Activities->find('all')
+            ->where(['Activities.id' => $id, 'Activities.company_id ' => get_company_id()])
+            ->first();
+        if (empty($activity)) $this->redirect('/');
+
         if ($this->Activities->delete($activity)) {
             $this->Flash->success(__('The activity has been deleted.'));
         } else {

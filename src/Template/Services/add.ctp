@@ -1,26 +1,28 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Services'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Companies'), ['controller' => 'Companies', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Company'), ['controller' => 'Companies', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Client Services'), ['controller' => 'ClientServices', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Client Service'), ['controller' => 'ClientServices', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="services form large-9 medium-8 columns content">
-    <?= $this->Form->create($service) ?>
-    <fieldset>
-        <legend><?= __('Add Service') ?></legend>
-        <?php
-            echo $this->Form->input('name');
-            echo $this->Form->input('price');
-            echo $this->Form->input('user_id', ['options' => $users]);
-            echo $this->Form->input('company_id', ['options' => $companies]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+<?php $this->assign('title', __('Add Service')); ?>
+<div class="row">
+
+    <?= $this->Form->create($service); ?>
+
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-body">
+
+            <div class="form-group">
+                <?= $this->Form->input('name', ['class' => 'form-control']) ?>
+            </div>
+
+            <div class="form-group">
+                <?= $this->Form->input('price', ['label' => __('Default price'), 'class' => 'form-control']) ?>
+            </div>
+
+        </div><!-- /.box-body -->
+        <div class="box-footer">
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+        </div>
+      </div><!-- /.box -->
+
+    </div><!-- /.col (left) -->
+
     <?= $this->Form->end() ?>
+
 </div>

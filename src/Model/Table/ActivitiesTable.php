@@ -69,12 +69,12 @@ class ActivitiesTable extends Table
             ->notEmpty('description');
 
         $validator
-            ->date('start_date')
+            ->datetime('start_date')
             ->requirePresence('start_date', 'create')
             ->notEmpty('start_date');
 
         $validator
-            ->date('end_date')
+            ->datetime('end_date')
             ->requirePresence('end_date', 'create')
             ->notEmpty('end_date');
 

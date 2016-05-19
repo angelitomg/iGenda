@@ -18,30 +18,12 @@ class ServicesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users', 'Companies']
-        ];
-        $services = $this->paginate($this->Services);
+        
+        $query = $this->Services->find()->where(['company_id' => get_company_id()]);
+        $services = $this->paginate($query);
 
         $this->set(compact('services'));
         $this->set('_serialize', ['services']);
-    }
-
-    /**
-     * View method
-     *
-     * @param string|null $id Service id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $service = $this->Services->get($id, [
-            'contain' => ['Users', 'Companies', 'ClientServices']
-        ]);
-
-        $this->set('service', $service);
-        $this->set('_serialize', ['service']);
     }
 
     /**
@@ -76,9 +58,12 @@ class ServicesController extends AppController
      */
     public function edit($id = null)
     {
-        $service = $this->Services->get($id, [
-            'contain' => []
-        ]);
+        
+        $service = $this->Services->find('all')
+            ->where(['Services.id' => $id, 'Services.company_id ' => get_company_id()])
+            ->first();
+        if (empty($service)) $this->redirect('/');
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $service = $this->Services->patchEntity($service, $this->request->data);
             if ($this->Services->save($service)) {
@@ -104,7 +89,11 @@ class ServicesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $service = $this->Services->get($id);
+
+        $service = $this->Services->find('all')
+            ->where(['Services.id' => $id, 'Services.company_id ' => get_company_id()])
+            ->first();
+
         if ($this->Services->delete($service)) {
             $this->Flash->success(__('The service has been deleted.'));
         } else {

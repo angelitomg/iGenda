@@ -6,6 +6,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Network\Request;
 
 /**
  * Users Model
@@ -114,9 +115,12 @@ class UsersTable extends Table
      *
      */
     public function beforeSave($event, $entity, $options){
+        
+        // If is user registration, accept company_id
 
-        // Only on create
-        if ($entity->isNew()) {
+        $path = $this->request->params['controller'] . '/' . $this->request->params['action'];
+        
+        if ($entity->isNew() && $path != 'Users/register') {
             $entity->company_id = get_company_id();    
         }
 

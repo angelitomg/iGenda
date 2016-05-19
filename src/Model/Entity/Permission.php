@@ -30,6 +30,6 @@ class Permission extends Entity
 
     protected function _getName()
     {
-        return __($this->_properties['name']);
+        return isset($this->_properties['name']) ? __($this->_properties['name']) : '';
     }
 }

@@ -40,6 +40,7 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
+            print_r($user);die();
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -100,6 +101,9 @@ class UsersController extends AppController
                     ->where(['Users.id' => $id, 'Users.company_id' => get_company_id()])
                     ->first();
 
+        // Don't allow user delete herself
+        if (get_user_id() == $id) $this->redirect('/');
+
         if ($this->Users->delete($user)) {
             $this->Flash->success(__('The user has been deleted.'));
         } else {
@@ -140,22 +144,32 @@ class UsersController extends AppController
             $company->name = $companyName;
             $companiesTable->save($company);
 
+            // Get permissions
+            $permissions = $this->Users->Permissions->find('list');
+
             // Create user
-            $usersTable = TableRegistry::get('Users');
-            $user = $usersTable->newEntity();
+            $user = $this->Users->newEntity();
             $user->email = $email;
             $user->password = $password;
             $user->company_id = $company->id;
             $user->activated = 0;
             $user->token = uniqid();
-            $usersTable->save($user);
+
+            // Set permissions
+            $permissions = $this->Users->Permissions->find('all');
+            $permissionsList = [];
+            foreach ($permissions as $permission) {
+                $permissionsList[] = $permission;
+            }
+            $user->permissions = $permissionsList;
+            $user->dirty('permissions', true);
+
+            // Save user
+            $this->Users->save($user);
 
             // Update user_id on companies table
             $company->user_id = $user->id;
             $companiesTable->save($company);
-
-            // Setup new user account
-            $this->_setupNewUserAccount($user);
 
             // Build email message
             $url = Router::url(['controller' => 'Users', 'action' => 'confirm', $user->token], true );
@@ -362,13 +376,5 @@ class UsersController extends AppController
 
     }
 
-    /**
-     * Setup new user account method
-     *
-     */
-    private function _setupNewUserAccount($user)
-    {
-        return true;
-    }
 
 }

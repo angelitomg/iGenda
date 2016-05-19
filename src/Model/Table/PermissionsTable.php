@@ -9,8 +9,6 @@ use Cake\Validation\Validator;
 
 /**
  * Permissions Model
- *
- * @property \Cake\ORM\Association\HasMany $UserPermissions
  */
 class PermissionsTable extends Table
 {
@@ -23,14 +21,14 @@ class PermissionsTable extends Table
      */
     public function initialize(array $config)
     {
-        parent::initialize($config);
-
         $this->table('permissions');
         $this->displayField('name');
         $this->primaryKey('id');
-
-        $this->hasMany('UserPermissions', [
-            'foreignKey' => 'permission_id'
+        $this->addBehavior('Timestamp');
+        $this->belongsToMany('Users', [
+            'foreignKey' => 'permission_id',
+            'targetForeignKey' => 'user_id',
+            'joinTable' => 'users_permissions'
         ]);
     }
 
@@ -43,14 +41,9 @@ class PermissionsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
-
-        $validator
+            ->allowEmpty('id', 'create')
             ->requirePresence('name', 'create')
-            ->notEmpty('name');
-
-        $validator
+            ->notEmpty('name')
             ->requirePresence('path', 'create')
             ->notEmpty('path');
 
