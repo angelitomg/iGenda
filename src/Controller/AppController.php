@@ -44,6 +44,7 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
 
+
         $this->loadComponent('Auth', [
             'authenticate' => [
                 'Form' => [
@@ -51,8 +52,36 @@ class AppController extends Controller
                 ]
             ]
         ]);
+        $this->Auth->config('authorize', ['Controller']);
 
         $this->viewBuilder()->layout('adminlte');
+
+    }
+
+    /**
+     * isAuthorized method
+     *
+     * @param object $user
+     * @return bool 
+     */
+    public function isAuthorized($user = null)
+    {
+
+        // Request path
+        $path = $this->request->params['controller'] . '/' . $this->request->params['action'];
+
+        // Allowed actions to all users
+        $allowed_actions = [
+            'Users/logout', 'Users/login', 'Users/register', 'Users/recoveryPassword', 'Users/confirm'
+        ];
+
+        if (in_array($path, $allowed_actions)) return true;
+
+        if (in_array($path, $this->Auth->user()['permissions'])) return true;
+
+        // Default deny
+        $this->Flash->error(__('You cannot access this area.'));
+        return $this->redirect('/');
 
     }
 

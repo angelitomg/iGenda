@@ -35,6 +35,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  <!-- REQUIRED JS SCRIPTS -->
+
+  <!-- jQuery 2.2.0 -->
+  <script src="<?= $this->Url->build('/') ?>/bower_components/AdminLTE/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+  <!-- Bootstrap 3.3.6 -->
+  <script src="<?= $this->Url->build('/') ?>/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="<?= $this->Url->build('/') ?>/bower_components/AdminLTE/dist/js/app.min.js"></script>
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -277,9 +287,34 @@ desired effect
           </a>
         </li>
 
+
+        <li <?php if ($controller == 'ActivityTypes') echo 'class="active"'; ?>>
+          <a href="<?= $this->Url->build(['controller' => 'ActivityTypes', 'action' => 'index']) ?>">
+            <i class="fa fa-list"></i><span><?= __('Activity Types') ?></span>
+          </a>
+        </li>
+
         <li <?php if ($controller == 'Clients') echo 'class="active"'; ?>>
           <a href="<?= $this->Url->build(['controller' => 'Clients', 'action' => 'index']) ?>">
             <i class="fa fa-users"></i><span><?= __('Clients') ?></span>
+          </a>
+        </li>
+
+        <li <?php if ($controller == 'Companies') echo 'class="active"'; ?>>
+          <a href="<?= $this->Url->build(['controller' => 'Companies', 'action' => 'edit']) ?>">
+            <i class="fa fa-building-o"></i><span><?= __('Company Info') ?></span>
+          </a>
+        </li>
+
+        <li <?php if ($controller == 'Deals') echo 'class="active"'; ?>>
+          <a href="<?= $this->Url->build(['controller' => 'Deals', 'action' => 'index']) ?>">
+            <i class="fa fa-folder-open-o"></i><span><?= __('Deals') ?></span>
+          </a>
+        </li>
+
+        <li <?php if ($controller == 'Reports') echo 'class="active"'; ?>>
+          <a href="<?= $this->Url->build(['controller' => 'Reports', 'action' => 'index']) ?>">
+            <i class="fa fa-line-chart"></i><span><?= __('Reports') ?></span>
           </a>
         </li>
 
@@ -289,21 +324,9 @@ desired effect
           </a>
         </li>
 
-        <li <?php if ($controller == 'ActivityTypes') echo 'class="active"'; ?>>
-          <a href="<?= $this->Url->build(['controller' => 'ActivityTypes', 'action' => 'index']) ?>">
-            <i class="fa fa-list"></i><span><?= __('Activity Types') ?></span>
-          </a>
-        </li>
-
         <li <?php if ($controller == 'Users') echo 'class="active"'; ?>>
           <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>">
             <i class="fa fa-user-plus"></i><span><?= __('Users') ?></span>
-          </a>
-        </li>
-
-        <li <?php if ($controller == 'Companies') echo 'class="active"'; ?>>
-          <a href="<?= $this->Url->build(['controller' => 'Companies', 'action' => 'edit']) ?>">
-            <i class="fa fa-building-o"></i><span><?= __('Company Info') ?></span>
           </a>
         </li>
 
@@ -454,15 +477,6 @@ desired effect
 
 </div>
 <!-- ./wrapper -->
-
-<!-- REQUIRED JS SCRIPTS -->
-
-<!-- jQuery 2.2.0 -->
-<script src="<?= $this->Url->build('/') ?>/bower_components/AdminLTE/plugins/jQuery/jQuery-2.2.0.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="<?= $this->Url->build('/') ?>/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?= $this->Url->build('/') ?>/bower_components/AdminLTE/dist/js/app.min.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

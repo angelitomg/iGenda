@@ -48,11 +48,8 @@
       </div>
       <div class="row">
         <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> <?= __('Remember Me') ?>
-            </label>
-          </div>
+          <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'recovery_password']) ?>"><?= __('I forgot my password') ?></a><br>
+          <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'register']) ?>" class="text-center"><?= __('Register a new membership') ?></a>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
@@ -61,9 +58,6 @@
         <!-- /.col -->
       </div>
     <?= $this->Form->end() ?>
-
-    <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'recovery_password']) ?>"><?= __('I forgot my password') ?></a><br>
-    <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'register']) ?>" class="text-center"><?= __('Register a new membership') ?></a>
 
   </div>
   <!-- /.login-box-body -->

@@ -9,6 +9,14 @@
         <?= $this->Html->link(__('New Acivity Type'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
     </p>
 
+    <?php if ($activityTypes->isEmpty()): ?>
+      <!-- Empty list message -->
+      <div class="callout callout-info alert-empty-list" style="background-color: #3c8dbc !important;">
+        <h4><?= __('Hello!') ?></h4>
+          <p><?= __('You have not registered any activity type. Click the New Activity Type button to add a new activity type.') ?></p>
+      </div>
+    <?php endif; ?>
+
     <div class="box">
 
         <!-- /.box-header -->

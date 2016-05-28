@@ -9,6 +9,14 @@
         <?= $this->Html->link(__('New Client'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
     </p>
 
+    <?php if ($clients->isEmpty()): ?>
+      <!-- Empty list message -->
+      <div class="callout callout-info alert-empty-list" style="background-color: #3c8dbc !important;">
+        <h4><?= __('Hello!') ?></h4>
+          <p><?= __('You have not registered any client. Click the New Client button to add a new client.') ?></p>
+      </div>
+    <?php endif; ?>
+
     <div class="box">
 
         <!-- /.box-header -->

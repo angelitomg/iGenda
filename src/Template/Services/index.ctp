@@ -9,6 +9,14 @@
         <?= $this->Html->link(__('New Service'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
     </p>
 
+    <?php if ($services->isEmpty()): ?>
+      <!-- Empty list message -->
+      <div class="callout callout-info alert-empty-list" style="background-color: #3c8dbc !important;">
+        <h4><?= __('Hello!') ?></h4>
+          <p><?= __('You have not registered any service. Click the New Service button to add a new service.') ?></p>
+      </div>
+    <?php endif; ?>
+
     <div class="box">
 
         <!-- /.box-header -->

@@ -6,6 +6,7 @@ use Cake\ORM\TableRegistry;
 use Cake\Network\Email\Email;
 use Cake\Routing\Router;
 use Cake\Core\Configure;
+use Cake\Event\Event;
 
 /**
  * Users Controller
@@ -14,6 +15,20 @@ use Cake\Core\Configure;
  */
 class UsersController extends AppController
 {
+
+    /**
+     * Before filter method.
+     *
+     * @param Event $event
+     */
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        // Allow users to register and logout.
+        // You should not add the "login" action to allow list. Doing so would
+        // cause problems with normal functioning of AuthComponent.
+        $this->Auth->allow(['register', 'recoveryPassword', 'confirm']);
+    }
 
     /**
      * Index method
@@ -39,14 +54,17 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
+
             $user = $this->Users->patchEntity($user, $this->request->data);
-            print_r($user);die();
+            $user->company_id = get_company_id();
+
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
+
         }
         $permissions = $this->Users->Permissions->find('list', ['limit' => 200]);
         $this->set(compact('user', 'permissions'));
@@ -70,13 +88,17 @@ class UsersController extends AppController
         if (empty($user)) $this->redirect('/');
 
         if ($this->request->is(['patch', 'post', 'put'])) {
+
             $user = $this->Users->patchEntity($user, $this->request->data);
+            $user->company_id = get_company_id();
+
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
+
         }
 
         $permissions = $this->Users->Permissions->find('list', ['limit' => 200]);
@@ -187,7 +209,7 @@ class UsersController extends AppController
               ->helpers(['Url'])
               ->viewVars(['title' => $emailTitle, 'description' => $emailContent])
               ->to([$user->email])
-              ->subject(__('New password generated.'))              
+              ->subject($emailTitle)              
               ->send();
 
             // Define status message
@@ -320,14 +342,12 @@ class UsersController extends AppController
             if ($user && $user['activated'] == 1) {
 
                 // Get user permissions
-                /*
                 $user_data = $this->Users->get($user['id'], ['contain' => ['Permissions']]);
                 if (!empty($user_data->permissions)) {
                     foreach ($user_data->permissions as $permission) {
                         $user['permissions'][] = $permission->get('path');    
                     }
                 }
-                */
 
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());

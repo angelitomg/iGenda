@@ -9,6 +9,14 @@
         <?= $this->Html->link(__('New Activity'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
     </p>
 
+    <?php if ($activities->isEmpty()): ?>
+      <!-- Empty list message -->
+      <div class="callout callout-info alert-empty-list" style="background-color: #3c8dbc !important;">
+        <h4><?= __('Hello!') ?></h4>
+          <p><?= __('You have not registered any activity. Click the New Activity button to add a new activity.') ?></p>
+      </div>
+    <?php endif; ?>
+
     <div class="box">
 
         <!-- /.box-header -->
@@ -20,7 +28,6 @@
               <th style="width: 10px"><?= $this->Paginator->sort('id') ?></th>
               <th><?= $this->Paginator->sort('client_id') ?></th>
               <th><?= $this->Paginator->sort('activity_type_id') ?></th>
-              <th><?= $this->Paginator->sort('description') ?></th>
               <th><?= $this->Paginator->sort('start_date') ?></th>
               <th><?= $this->Paginator->sort('end_date') ?></th>
               <th><?= $this->Paginator->sort('status') ?></th>
@@ -32,7 +39,6 @@
                     <td><?= $this->Number->format($activity->id) ?></td>
                     <td><?= h($activity->client->name) ?></td>
                     <td><?= h($activity->activity_type->name) ?></td>
-                    <td><?= h($activity->description) ?></td>
                     <td><?= h($activity->start_date) ?></td>
                     <td><?= h($activity->end_date) ?></td>
                     <td><?= h($activity->getStatus($activity->status)) ?></td>

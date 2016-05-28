@@ -64,7 +64,8 @@ class UsersTable extends Table
         $this->belongsToMany('Permissions', [
             'foreignKey' => 'user_id',
             'targetForeignKey' => 'permission_id',
-            'joinTable' => 'users_permissions'
+            'joinTable' => 'users_permissions',
+            'dependent' => true
         ]);
     }
 
@@ -106,7 +107,7 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['email']));
-        $rules->add($rules->existsIn(['company_id'], 'Companies'));
+        //$rules->add($rules->existsIn(['company_id'], 'Companies'));
         return $rules;
     }
 
@@ -116,13 +117,7 @@ class UsersTable extends Table
      */
     public function beforeSave($event, $entity, $options){
         
-        // If is user registration, accept company_id
-
-        $path = $this->request->params['controller'] . '/' . $this->request->params['action'];
-        
-        if ($entity->isNew() && $path != 'Users/register') {
-            $entity->company_id = get_company_id();    
-        }
+        //$entity->company_id = get_company_id();    
 
     }
 
