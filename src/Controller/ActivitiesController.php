@@ -19,10 +19,15 @@ class ActivitiesController extends AppController
     public function index()
     {
 
+        $activity = $this->Activities->newEntity();
         $query = $this->Activities->find()->contain(['Clients', 'ActivityTypes'])->where(['Activities.company_id' => get_company_id()]);
         $activities = $this->paginate($query);
 
-        $this->set(compact('activities'));
+        $clients = $this->Activities->Clients->find('list');
+        $activityTypes = $this->Activities->ActivityTypes->find('list');
+        $statusList = $activity->getStatusList();
+
+        $this->set(compact('activities', 'activityTypes', 'clients', 'statusList'));
         $this->set('_serialize', ['activities']);
     }
 
@@ -63,11 +68,9 @@ class ActivitiesController extends AppController
                 $this->Flash->error(__('The activity could not be saved. Please, try again.'));
             }
         }
-        $clients = $this->Activities->Clients->find('list', ['limit' => 200]);
-        $activityTypes = $this->Activities->ActivityTypes->find('list', ['limit' => 200]);
-        $users = $this->Activities->Users->find('list', ['limit' => 200]);
-        $companies = $this->Activities->Companies->find('list', ['limit' => 200]);
-        $this->set(compact('activity', 'clients', 'activityTypes', 'users', 'companies'));
+        $clients = $this->Activities->Clients->find('list');
+        $activityTypes = $this->Activities->ActivityTypes->find('list');
+        $this->set(compact('activity', 'clients', 'activityTypes'));
         $this->set('_serialize', ['activity']);
     }
 
@@ -95,11 +98,9 @@ class ActivitiesController extends AppController
                 $this->Flash->error(__('The activity could not be saved. Please, try again.'));
             }
         }
-        $clients = $this->Activities->Clients->find('list', ['limit' => 200]);
-        $activityTypes = $this->Activities->ActivityTypes->find('list', ['limit' => 200]);
-        $users = $this->Activities->Users->find('list', ['limit' => 200]);
-        $companies = $this->Activities->Companies->find('list', ['limit' => 200]);
-        $this->set(compact('activity', 'clients', 'activityTypes', 'users', 'companies'));
+        $clients = $this->Activities->Clients->find('list');
+        $activityTypes = $this->Activities->ActivityTypes->find('list');
+        $this->set(compact('activity', 'clients', 'activityTypes'));
         $this->set('_serialize', ['activity']);
     }
 

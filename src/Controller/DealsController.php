@@ -37,7 +37,7 @@ class DealsController extends AppController
     {
 
         $deal = $this->Deals->find('all')
-            ->contain(['Clients', 'DealServices'])
+            ->contain(['Clients', 'DealServices', 'Users'])
             ->where(['Deals.id' => $id, 'Deals.company_id ' => get_company_id()])
             ->first();
         if (empty($deal)) $this->redirect('/');
@@ -63,10 +63,10 @@ class DealsController extends AppController
                 $this->Flash->error(__('The deal could not be saved. Please, try again.'));
             }
         }
-        $clients = $this->Deals->Clients->find('list', ['limit' => 9999]);
+        $clients = $this->Deals->Clients->find('list');
 
         $this->loadModel('Services');
-        $services = $this->Services->find('list', ['limit' => 9999]);
+        $services = $this->Services->find('list');
         $servicesData = $this->Services->find('all');
 
         $this->set(compact('deal', 'clients', 'services', 'servicesData'));
@@ -102,10 +102,10 @@ class DealsController extends AppController
             }
         }
 
-        $clients = $this->Deals->Clients->find('list', ['limit' => 9999]);
+        $clients = $this->Deals->Clients->find('list');
 
         $this->loadModel('Services');
-        $services = $this->Services->find('list', ['limit' => 9999]);
+        $services = $this->Services->find('list');
         $servicesData = $this->Services->find('all');
 
         $this->set(compact('deal', 'clients', 'servicesData', 'services'));

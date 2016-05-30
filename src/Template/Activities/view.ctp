@@ -5,7 +5,7 @@
 
 <div class="box-body">
   
-  <div class="col-md-6">
+  <div class="col-sm-4 invoice-col">
 
     <dl class="dl-horizontal">
 
@@ -21,13 +21,17 @@
         <dt><?= __('End Date') ?>:</dt>
         <dd><?= h($activity->end_date) ?></dd>
 
-        <dt><?= __('Description') ?>:</dt>
-        <dd><?= $this->Text->autoParagraph(h($activity->description)) ?></dd>
-
     </dl>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-sm-4 invoice-col">
+    <dl class="dl-horizontal">
+        <dt><?= __('Description') ?>:</dt>
+        <dd><?= $this->Text->autoParagraph(h($activity->description)) ?></dd>
+    </dl>
+  </div>
+
+  <div class="col-sm-4 invoice-col">
     
     <dl class="dl-horizontal">
 

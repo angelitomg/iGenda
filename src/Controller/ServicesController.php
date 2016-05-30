@@ -43,9 +43,7 @@ class ServicesController extends AppController
                 $this->Flash->error(__('The service could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Services->Users->find('list', ['limit' => 200]);
-        $companies = $this->Services->Companies->find('list', ['limit' => 200]);
-        $this->set(compact('service', 'users', 'companies'));
+        $this->set(compact('service'));
         $this->set('_serialize', ['service']);
     }
 
@@ -73,9 +71,7 @@ class ServicesController extends AppController
                 $this->Flash->error(__('The service could not be saved. Please, try again.'));
             }
         }
-        $users = $this->Services->Users->find('list', ['limit' => 200]);
-        $companies = $this->Services->Companies->find('list', ['limit' => 200]);
-        $this->set(compact('service', 'users', 'companies'));
+        $this->set(compact('service'));
         $this->set('_serialize', ['service']);
     }
 

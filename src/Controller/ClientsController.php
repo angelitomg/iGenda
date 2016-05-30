@@ -45,6 +45,7 @@ class ClientsController extends AppController
     {
 
         $client = $this->Clients->find('all')
+            ->contain(['Users'])
             ->where(['Clients.id' => $id, 'Clients.company_id ' => get_company_id()])
             ->first();
         if (empty($client)) $this->redirect('/');
