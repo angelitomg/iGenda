@@ -1,267 +1,160 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Client'), ['action' => 'edit', $client->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Client'), ['action' => 'delete', $client->id], ['confirm' => __('Are you sure you want to delete # {0}?', $client->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Clients'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Client'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Companies'), ['controller' => 'Companies', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Company'), ['controller' => 'Companies', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Activities'), ['controller' => 'Activities', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Activity'), ['controller' => 'Activities', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Client Services'), ['controller' => 'ClientServices', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Client Service'), ['controller' => 'ClientServices', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="clients view large-9 medium-8 columns content">
-    <h3><?= h($client->name) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th><?= __('Name') ?></th>
-            <td><?= h($client->name) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Document1') ?></th>
-            <td><?= h($client->document1) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Document2') ?></th>
-            <td><?= h($client->document2) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Phone') ?></th>
-            <td><?= h($client->phone) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Email') ?></th>
-            <td><?= h($client->email) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Site') ?></th>
-            <td><?= h($client->site) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Contact Name') ?></th>
-            <td><?= h($client->contact_name) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('User') ?></th>
-            <td><?= $client->has('user') ? $this->Html->link($client->user->name, ['controller' => 'Users', 'action' => 'view', $client->user->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Company') ?></th>
-            <td><?= $client->has('company') ? $this->Html->link($client->company->name, ['controller' => 'Companies', 'action' => 'view', $client->company->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Id') ?></th>
-            <td><?= $this->Number->format($client->id) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Birthdate') ?></th>
-            <td><?= h($client->birthdate) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Created') ?></th>
-            <td><?= h($client->created) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Modified') ?></th>
-            <td><?= h($client->modified) ?></td>
-        </tr>
-    </table>
+<?php $this->assign('title', __('Client') . ' # ' . $this->Number->format($client->id)); ?>
+
+<!-- Main content -->
+<section class="invoice">
+  <!-- title row -->
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="page-header">
+        <i class="fa fa-user"></i> 
+        <?= $client->name ?>
+        <small class="pull-right"><?= __('Id') ?>: <?= $this->Number->format($client->id) ?></small>
+      </h2>
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- info row -->
+  <div class="row invoice-info">
+    <div class="col-sm-4 invoice-col">
+      <dl class="dl-horizontal">
+        <dt><?= __('Name') ?>: </dt> 
+        <dd><?= h($client->name) ?><dd>
+        <dt><?= __('Document1') ?>: </dt> 
+        <dd><?= h($client->document1) ?></dd>
+        <dt><?= __('Document2') ?>: </dt> 
+        <dd><?= h($client->document2) ?></dd>
+        <dt><?= __('Birthdate') ?>:</dt> 
+        <dd><?= h($client->birthdate) ?></dd>
+      </dl>
+    </tr>
+
+    </div>
+    <!-- /.col -->
+    <div class="col-sm-4 invoice-col">
+      <dl class="dl-horizontal">
+        <dt><?= __('Address') ?>: </dt> 
+        <dd><?= $this->Text->autoParagraph(h($client->address)); ?><dd>
+        <dt><?= __('Phone') ?>: </dt> 
+        <dd><?= h($client->phone) ?><dd>
+        <dt><?= __('Email') ?>: </dt> 
+        <dd><?= h($client->email) ?></dd>
+        <dt><?= __('Site') ?>: </dt> 
+        <dd><?= h($client->site) ?></dd>
+
+      </dl>
+    </div>
+    <!-- /.col -->
+    <div class="col-sm-4 invoice-col">
+      <dl class="dl-horizontal">
+        <dt><?= __('Contact Name') ?>:</dt> 
+        <dd><?= h($client->contact_name) ?></dd>
+        <dt><?= __('User') ?>: </dt> 
+        <dd><?= $client->has('user') ? $client->user->name : '' ?></dd>
+        <dt><?= __('Created') ?>: </dt> 
+        <dd><?= h($client->created) ?></dd>
+        <dt><?= __('Modified') ?>:</dt> 
+        <dd><?= h($client->modified) ?></dd>
+      </dl>
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+
+  <!-- Table row -->
+  <?php if (!$activities->isEmpty()): ?>
     <div class="row">
-        <h4><?= __('Address') ?></h4>
-        <?= $this->Text->autoParagraph(h($client->address)); ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Activities') ?></h4>
-        <?php if (!empty($client->activities)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Client Id') ?></th>
-                <th><?= __('Activity Type Id') ?></th>
-                <th><?= __('Description') ?></th>
-                <th><?= __('Start Date') ?></th>
-                <th><?= __('End Date') ?></th>
-                <th><?= __('Status') ?></th>
-                <th><?= __('User Id') ?></th>
-                <th><?= __('Company Id') ?></th>
-                <th><?= __('Created') ?></th>
-                <th><?= __('Modified') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($client->activities as $activities): ?>
-            <tr>
-                <td><?= h($activities->id) ?></td>
-                <td><?= h($activities->client_id) ?></td>
-                <td><?= h($activities->activity_type_id) ?></td>
-                <td><?= h($activities->description) ?></td>
-                <td><?= h($activities->start_date) ?></td>
-                <td><?= h($activities->end_date) ?></td>
-                <td><?= h($activities->status) ?></td>
-                <td><?= h($activities->user_id) ?></td>
-                <td><?= h($activities->company_id) ?></td>
-                <td><?= h($activities->created) ?></td>
-                <td><?= h($activities->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Activities', 'action' => 'view', $activities->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Activities', 'action' => 'edit', $activities->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Activities', 'action' => 'delete', $activities->id], ['confirm' => __('Are you sure you want to delete # {0}?', $activities->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Client Services') ?></h4>
-        <?php if (!empty($client->client_services)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Service Id') ?></th>
-                <th><?= __('Client Id') ?></th>
-                <th><?= __('Name') ?></th>
-                <th><?= __('Quantity') ?></th>
-                <th><?= __('Price') ?></th>
-                <th><?= __('Start Date') ?></th>
-                <th><?= __('End Date') ?></th>
-                <th><?= __('Status') ?></th>
-                <th><?= __('User Id') ?></th>
-                <th><?= __('Company Id') ?></th>
-                <th><?= __('Created') ?></th>
-                <th><?= __('Modified') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($client->client_services as $clientServices): ?>
-            <tr>
-                <td><?= h($clientServices->id) ?></td>
-                <td><?= h($clientServices->service_id) ?></td>
-                <td><?= h($clientServices->client_id) ?></td>
-                <td><?= h($clientServices->name) ?></td>
-                <td><?= h($clientServices->quantity) ?></td>
-                <td><?= h($clientServices->price) ?></td>
-                <td><?= h($clientServices->start_date) ?></td>
-                <td><?= h($clientServices->end_date) ?></td>
-                <td><?= h($clientServices->status) ?></td>
-                <td><?= h($clientServices->user_id) ?></td>
-                <td><?= h($clientServices->company_id) ?></td>
-                <td><?= h($clientServices->created) ?></td>
-                <td><?= h($clientServices->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'ClientServices', 'action' => 'view', $clientServices->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'ClientServices', 'action' => 'edit', $clientServices->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'ClientServices', 'action' => 'delete', $clientServices->id], ['confirm' => __('Are you sure you want to delete # {0}?', $clientServices->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
-</div>
-
-
-    <!-- Main content -->
-    <section class="invoice">
-      <!-- title row -->
-      <div class="row">
-        <div class="col-xs-12">
-          <h2 class="page-header">
-            <i class="fa fa-user"></i> 
-            <?= $client->name ?>
-            <small class="pull-right"><?= __('Birthdate') ?>: <?= h($client->birthdate) ?></small>
-          </h2>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- info row -->
-      <div class="row invoice-info">
-        <div class="col-sm-4 invoice-col">
-          From
-          <address>
-            <strong>Admin, Inc.</strong><br>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
-            Phone: (804) 123-5432<br>
-            Email: info@almasaeedstudio.com
-          </address>
-        </div>
-        <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-          To
-          <address>
-            <strong>John Doe</strong><br>
-            795 Folsom Ave, Suite 600<br>
-            San Francisco, CA 94107<br>
-            Phone: (555) 539-1037<br>
-            Email: john.doe@example.com
-          </address>
-        </div>
-        <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-          <b>Invoice #007612</b><br>
-          <br>
-          <b>Order ID:</b> 4F3S8J<br>
-          <b>Payment Due:</b> 2/22/2014<br>
-          <b>Account:</b> 968-34567
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
-      <!-- Table row -->
-      <div class="row">
-        <div class="col-xs-12 table-responsive">
-          <table class="table table-striped">
+      <div class="col-xs-12 table-responsive">
+        <p class="lead"><?= __('Next Activities') ?></p>
+        <table class="table table-striped">
             <thead>
             <tr>
-              <th>Qty</th>
-              <th>Product</th>
-              <th>Serial #</th>
-              <th>Description</th>
-              <th>Subtotal</th>
+                <th><?= __('Id') ?></th>
+                <th><?= __('Activity Type') ?></th>
+                <th><?= __('Start Date') ?></th>
+                <th><?= __('End Date') ?></th>
+                <th><?= __('Status') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
             </tr>
             </thead>
             <tbody>
+            <?php foreach ($activities as $activity): ?>
             <tr>
-              <td>1</td>
-              <td>Call of Duty</td>
-              <td>455-981-221</td>
-              <td>El snort testosterone trophy driving gloves handsome</td>
-              <td>$64.50</td>
+                <td><?= h($activity->id) ?></td>
+                <td><?= h($activity->activity_type->name) ?></td>
+                <td><?= h($activity->start_date) ?></td>
+                <td><?= h($activity->end_date) ?></td>
+                <td>
+                  <?php
+                      $css_class = '';
+                      if ($activity->status > 0  && $activity->status <= 10) $css_class = 'label-warning';
+                      if ($activity->status > 10 && $activity->status <= 20) $css_class = 'label-info';
+                      if ($activity->status > 20 && $activity->status <= 30) $css_class = 'label-danger';
+                      if ($activity->status > 30 && $activity->status <= 40) $css_class = 'label-success';
+                  ?>
+                  <span class="label <?= $css_class ?>"><?= h($activity->getStatus($activity->status)) ?></span>  
+                </td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'Activities', 'action' => 'view', $activity->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Activities', 'action' => 'edit', $activity->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Activities', 'action' => 'delete', $activity->id], ['confirm' => __('Are you sure you want to delete # {0}?', $activity->id)]) ?>
+                </td>
             </tr>
-            <tr>
-              <td>1</td>
-              <td>Need for Speed IV</td>
-              <td>247-925-726</td>
-              <td>Wes Anderson umami biodiesel</td>
-              <td>$50.00</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Monsters DVD</td>
-              <td>735-845-642</td>
-              <td>Terry Richardson helvetica tousled street art master</td>
-              <td>$10.70</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Grown Ups Blue Ray</td>
-              <td>422-568-642</td>
-              <td>Tousled lomo letterpress</td>
-              <td>$25.99</td>
-            </tr>
+            <?php endforeach; ?>
             </tbody>
-          </table>
-        </div>
-        <!-- /.col -->
+        </table>
       </div>
-      <!-- /.row -->
+    </div>
+  <?php endif; ?>
 
-      </section>
+  <!-- Table row -->
+  <?php if (!$deals->isEmpty()): ?>
+    <div class="row">
+      <div class="col-xs-12 table-responsive">
+        <p class="lead"><?= __('Current Deals') ?></p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><?= __('Id') ?></th>
+                <th><?= __('Name') ?></th>
+                <th><?= __('Start Date') ?></th>
+                <th><?= __('End Date') ?></th>
+                <th><?= __('Amount') ?></th>
+                <th><?= __('Status') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($deals as $deal): ?>
+            <tr>
+                <td><?= h($deal->id) ?></td>
+                <td><?= h($deal->name) ?></td>
+                <td><?= h($deal->start_date) ?></td>
+                <td><?= h($deal->end_date) ?></td>
+                <td><?= $this->Number->currency($deal->amount) ?></td>
+                <td>
+                  <?php
+                      $css_class = '';
+                      if ($deal->status > 0  && $deal->status <= 10) $css_class = 'label-warning';
+                      if ($deal->status > 10 && $deal->status <= 20) $css_class = 'label-info';
+                      if ($deal->status > 20 && $deal->status <= 30) $css_class = 'label-danger';
+                      if ($deal->status > 30 && $deal->status <= 40) $css_class = 'label-success';
+                  ?>
+                  <span class="label <?= $css_class ?>"><?= h($deal->getStatus($deal->status)) ?></span>  
+                </td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'Deals', 'action' => 'view', $deal->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Deals', 'action' => 'edit', $deal->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Deals', 'action' => 'delete', $deal->id], ['confirm' => __('Are you sure you want to delete # {0}?', $deal->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  <?php endif; ?>
+
+  </section>
 
 
 

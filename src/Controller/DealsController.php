@@ -18,10 +18,9 @@ class DealsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Clients', 'Users', 'Companies']
-        ];
-        $deals = $this->paginate($this->Deals);
+
+        $query = $this->Deals->find()->contain(['Clients'])->where(['Deals.company_id' => get_company_id()]);
+        $deals = $this->paginate($query);
 
         $this->set(compact('deals'));
         $this->set('_serialize', ['deals']);
@@ -36,9 +35,12 @@ class DealsController extends AppController
      */
     public function view($id = null)
     {
-        $deal = $this->Deals->get($id, [
-            'contain' => ['Clients', 'Users', 'Companies', 'Services']
-        ]);
+
+        $deal = $this->Deals->find('all')
+            ->contain(['Clients', 'DealServices'])
+            ->where(['Deals.id' => $id, 'Deals.company_id ' => get_company_id()])
+            ->first();
+        if (empty($deal)) $this->redirect('/');
 
         $this->set('deal', $deal);
         $this->set('_serialize', ['deal']);
@@ -53,9 +55,7 @@ class DealsController extends AppController
     {
         $deal = $this->Deals->newEntity();
         if ($this->request->is('post')) {
-            //print_r($this->request->data);
             $deal = $this->Deals->patchEntity($deal, $this->request->data);
-            //print_r($deal);die();
             if ($this->Deals->save($deal, ['associated' => 'DealServices'])) {
                 $this->Flash->success(__('The deal has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -82,23 +82,33 @@ class DealsController extends AppController
      */
     public function edit($id = null)
     {
-        $deal = $this->Deals->get($id, [
-            'contain' => ['Services']
-        ]);
+
+        $deal = $this->Deals->find('all')
+            ->contain(['DealServices'])
+            ->where(['Deals.id' => $id, 'Deals.company_id ' => get_company_id()])
+            ->first();
+        if (empty($deal)) $this->redirect('/');
+
         if ($this->request->is(['patch', 'post', 'put'])) {
+
+            $this->Deals->DealServices->deleteAll(['DealServices.deal_id' => $id]);
+
             $deal = $this->Deals->patchEntity($deal, $this->request->data);
-            if ($this->Deals->save($deal)) {
+            if ($this->Deals->save($deal, ['associated' => 'DealServices'])) {
                 $this->Flash->success(__('The deal has been saved.'));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The deal could not be saved. Please, try again.'));
             }
         }
-        $clients = $this->Deals->Clients->find('list', ['limit' => 200]);
-        $users = $this->Deals->Users->find('list', ['limit' => 200]);
-        $companies = $this->Deals->Companies->find('list', ['limit' => 200]);
-        $services = $this->Deals->Services->find('list', ['limit' => 200]);
-        $this->set(compact('deal', 'clients', 'users', 'companies', 'services'));
+
+        $clients = $this->Deals->Clients->find('list', ['limit' => 9999]);
+
+        $this->loadModel('Services');
+        $services = $this->Services->find('list', ['limit' => 9999]);
+        $servicesData = $this->Services->find('all');
+
+        $this->set(compact('deal', 'clients', 'servicesData', 'services'));
         $this->set('_serialize', ['deal']);
     }
 
@@ -111,8 +121,14 @@ class DealsController extends AppController
      */
     public function delete($id = null)
     {
+
         $this->request->allowMethod(['post', 'delete']);
-        $deal = $this->Deals->get($id);
+
+        $deal = $this->Deals->find('all')
+            ->where(['Deals.id' => $id, 'Deals.company_id ' => get_company_id()])
+            ->first();
+        if (empty($deal)) $this->redirect('/');
+
         if ($this->Deals->delete($deal)) {
             $this->Flash->success(__('The deal has been deleted.'));
         } else {

@@ -15,11 +15,14 @@
         <dt><?= __('Activity Type') ?>:</dt>
         <dd><?= $activity->has('activity_type') ? $activity->activity_type->name : '' ?></dd>
 
-        <dt><?= __('Description') ?>:</dt>
-        <dd><?= h($activity->description) ?></dd>
+        <dt><?= __('Start Date') ?>:</dt>
+        <dd><?= h($activity->start_date) ?></dd>
 
-        <dt><?= __('User') ?>:</dt>
-        <dd><?= $activity->has('user') ? $activity->user->name : '' ?></dd>
+        <dt><?= __('End Date') ?>:</dt>
+        <dd><?= h($activity->end_date) ?></dd>
+
+        <dt><?= __('Description') ?>:</dt>
+        <dd><?= $this->Text->autoParagraph(h($activity->description)) ?></dd>
 
     </dl>
   </div>
@@ -28,20 +31,17 @@
     
     <dl class="dl-horizontal">
 
-        <dt><?= __('Start Date') ?>:</dt>
-        <dd><?= h($activity->start_date) ?></dd>
+        <dt><?= __('Status') ?>:</dt>
+        <dd><?= $activity->getStatus($activity->status) ?></dd>
 
-        <dt><?= __('End Date') ?>:</dt>
-        <dd><?= h($activity->end_date) ?></dd>
+        <dt><?= __('User') ?>:</dt>
+        <dd><?= $activity->has('user') ? $activity->user->name : '' ?></dd>
 
         <dt><?= __('Created') ?>:</dt>
         <dd><?= h($activity->created) ?></dd>
 
         <dt><?= __('Modified') ?>:</dt>
         <dd><?= h($activity->modified) ?></dd>
-
-        <dt><?= __('Status') ?>:</dt>
-        <dd><?= $activity->getStatus($activity->status) ?></dd>
 
     </dl>
 

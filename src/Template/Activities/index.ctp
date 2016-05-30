@@ -41,7 +41,16 @@
                     <td><?= h($activity->activity_type->name) ?></td>
                     <td><?= h($activity->start_date) ?></td>
                     <td><?= h($activity->end_date) ?></td>
-                    <td><?= h($activity->getStatus($activity->status)) ?></td>
+                    <td>
+                      <?php
+                          $css_class = '';
+                          if ($activity->status > 0  && $activity->status <= 10) $css_class = 'label-warning';
+                          if ($activity->status > 10 && $activity->status <= 20) $css_class = 'label-info';
+                          if ($activity->status > 20 && $activity->status <= 30) $css_class = 'label-danger';
+                          if ($activity->status > 30 && $activity->status <= 40) $css_class = 'label-success';
+                      ?>
+                      <span class="label <?= $css_class ?>"><?= h($activity->getStatus($activity->status)) ?></span>  
+                    </td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $activity->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $activity->id]) ?>

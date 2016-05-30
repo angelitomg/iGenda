@@ -1,41 +1,74 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $deal->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $deal->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Deals'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Companies'), ['controller' => 'Companies', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Company'), ['controller' => 'Companies', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Services'), ['controller' => 'Services', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Service'), ['controller' => 'Services', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="deals form large-9 medium-8 columns content">
-    <?= $this->Form->create($deal) ?>
-    <fieldset>
-        <legend><?= __('Edit Deal') ?></legend>
-        <?php
-            echo $this->Form->input('client_id', ['options' => $clients]);
-            echo $this->Form->input('name');
-            echo $this->Form->input('description');
-            echo $this->Form->input('quantity');
-            echo $this->Form->input('price');
-            echo $this->Form->input('start_date');
-            echo $this->Form->input('end_date');
-            echo $this->Form->input('status');
-            echo $this->Form->input('user_id', ['options' => $users]);
-            echo $this->Form->input('company_id', ['options' => $companies]);
-            echo $this->Form->input('services._ids', ['options' => $services]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+<?php $this->assign('title', __('Edit Deal')); ?>
+<div class="row">
+
+    <?= $this->Form->create($deal); ?>
+
+    <div class="col-md-12">
+
+          <div class="box box-primary">
+            <div class="box-body">
+
+                <div class="form-group">
+                  <?= $this->Form->input('name', ['class' => 'form-control']) ?>
+                </div>
+
+                <div class="form-group">
+                  <?= $this->Form->input('client_id', ['class' => 'form-control', 'options' => $clients]) ?>
+                </div>
+
+
+                <div class="form-group">
+                  <?= $this->Form->input('description', ['class' => 'form-control']) ?>
+                </div>
+
+                <div class="form-group">
+                  <label><?= __('Start date') ?></label>
+                  <?= $this->Form->input('start_date', ['class' => 'form-control', 'label' => false]) ?>
+                </div>
+
+                <div class="form-group">
+                  <label><?= __('End date') ?></label>
+                  <?= $this->Form->input('end_date', ['class' => 'form-control', 'label' => false]) ?>
+                </div>
+
+                <div class="form-group">
+                  <?= $this->Form->input('status', ['class' => 'form-control', 'options' => $deal->getStatusList()]) ?>
+                </div>
+
+                <div class="form-group">
+                  <?= $this->Form->input('amount', ['class' => 'form-control', 'value' => '0', 'readonly' => 'readonly']) ?>
+                </div>
+
+            </div><!-- /.box-body -->
+          
+          <div class="box-footer">
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+          </div>
+        
+        </div><!-- /.box -->
+
+    </div>
+
+    <?= $this->element('Deals/services-list') ?>
+
     <?= $this->Form->end() ?>
+
 </div>
+
+<?= $this->element('Deals/deals-form-js') ?>
+<?php if (!empty($deal->deal_services)): ?>
+    <script>
+        $(function(){
+            <?php foreach ($deal->deal_services as $s): ?>
+                <?php echo "addServiceListRow($s->service_id, $s->quantity, $s->price);"; ?>
+            <?php endforeach; ?>
+        });
+    </script>
+<?php endif; ?>
+
+<!-- Service prices -->
+<?php if (!empty($servicesData)): ?>
+  <?php foreach ($servicesData as $service): ?>
+    <input type="hidden" id="service-price-list-<?= $service->id ?>" value="<?= $service->price ?>" />
+  <?php endforeach; ?>
+<?php endif; ?>

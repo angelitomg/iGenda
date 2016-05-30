@@ -18,13 +18,16 @@
             html += '<div class="col-xs-4">\
                         <div class="form-group">';
 
+            price = parseFloat(price).toFixed(2);
+
             // Generate services combo
-            html += '<?php echo $this->Form->input("deal_services[__ROWID__][service_id]", ["class" => "form-control service-name", "data-row-id" => "__ROWID__", "empty" => __("Select..."), "id" => "service-name-__ROWID__", "options" => $services, "label" => false]); ?>';
+            html += '<?php echo $this->Form->input("deal_services[__ROWID__][service_id]", ["class" => "form-control service-name", "data-row-id" => "__ROWID__", "empty" => __("Select..."), "id" => "service-__ROWID__", "options" => $services, "label" => false]); ?>';
 
             total = 0;
 
             html += '</div>\
                     </div>\
+                    <input type="hidden" name="deal_services[' + rowID + '][name]" value="" data-row-id="' + rowID + '" id="service-name-' + rowID + '"  />\
                     <div class="col-xs-2">\
                         <div class="form-group">\
                             <input type="text" data-row-id="' + rowID + '" id="service-quantity-' + rowID + '" class="form-control service-quantity" name="deal_services[' + rowID + '][quantity]" value="' + quantity + '" />\
@@ -51,6 +54,7 @@
 
             $('#services-list').append(html);
             calcServicePrice(rowID);
+            $('#service-' + rowID).val(service_id);
 
             rowID++;
 
@@ -81,11 +85,17 @@
 
         // When service is changed
         $('.services-list').on('change', '.service-name', function(){
+
             var row_id = $(this).attr('data-row-id');
             var service_id = $(this).val();
             var price = $('#service-price-list-' + service_id).val();
+            var service_name = $('#service-' + row_id +  ' option:selected').text();
+
             price = parseFloat(price).toFixed(2);
+
+            $('#service-name-' + row_id).val(service_name);
             $('#service-price-' + row_id).val(price);
+
             calcServicePrice(row_id);
         });
 

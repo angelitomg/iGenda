@@ -28,7 +28,7 @@
               <th style="width: 10px"><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('client_id') ?></th>
                 <th><?= $this->Paginator->sort('name') ?></th>
-                <th><?= $this->Paginator->sort('price') ?></th>
+                <th><?= $this->Paginator->sort('amount') ?></th>
                 <th><?= $this->Paginator->sort('start_date') ?></th>
                 <th><?= $this->Paginator->sort('end_date') ?></th>
                 <th><?= $this->Paginator->sort('status') ?></th>
@@ -40,10 +40,19 @@
                 <td><?= $this->Number->format($deal->id) ?></td>
                 <td><?= $deal->has('client') ? $this->Html->link($deal->client->name, ['controller' => 'Clients', 'action' => 'view', $deal->client->id]) : '' ?></td>
                 <td><?= h($deal->name) ?></td>
-                <td><?= $this->Number->format($deal->price) ?></td>
+                <td><?= $this->Number->currency($deal->amount) ?></td>
                 <td><?= h($deal->start_date) ?></td>
                 <td><?= h($deal->end_date) ?></td>
-                <td><?= $deal->getStatus($deal->status) ?></td>
+                <td>
+                    <?php
+                        $css_class = '';
+                        if ($deal->status > 0  && $deal->status <= 10) $css_class = 'label-warning';
+                        if ($deal->status > 10 && $deal->status <= 20) $css_class = 'label-info';
+                        if ($deal->status > 20 && $deal->status <= 30) $css_class = 'label-danger';
+                        if ($deal->status > 30 && $deal->status <= 40) $css_class = 'label-success';
+                    ?>
+                    <span class="label <?= $css_class ?>"><?= h($deal->getStatus($deal->status)) ?></span> 
+                </td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $deal->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $deal->id]) ?>

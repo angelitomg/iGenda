@@ -19,7 +19,15 @@ class ClientsController extends AppController
     public function index()
     {
 
-        $query = $this->Clients->find()->where(['company_id' => get_company_id()]);
+        $name = isset($this->request->query['name']) ? $this->request->query['name'] : '';
+
+        if (!empty($name)) {
+            $options = ['conditions' => ['Clients.name LIKE' => "%{$name}%"]];
+            $where['Clients.name LIKE'] = "%{$name}%";
+        }
+        $where['Clients.company_id'] = get_company_id();
+
+        $query = $this->Clients->find()->where($where);
         $clients = $this->paginate($query);
 
         $this->set(compact('clients'));
@@ -41,8 +49,32 @@ class ClientsController extends AppController
             ->first();
         if (empty($client)) $this->redirect('/');
 
+        $this->loadModel('Activities');
+        $activitiesWhere = [
+            'Activities.company_id' => get_company_id(),
+            'Activities.client_id' => $id,
+            'Activities.status <= ' => 30 // Not complete activities
+        ];
+        $activities = $this->Activities
+            ->find('all')
+            ->contain(['ActivityTypes'])
+            ->where($activitiesWhere);
+
+        $this->loadModel('Deals');
+        $dealsWhere = [
+            'Deals.company_id' => get_company_id(),
+            'Deals.client_id' => $id,
+            'Deals.status <= ' => 30 // Not complete deals
+        ];
+        $deals = $this->Deals
+            ->find('all')
+            ->where($dealsWhere);
+
+
         $this->set('client', $client);
-        $this->set('_serialize', ['client']);
+        $this->set('activities', $activities);
+        $this->set('deals', $deals);
+        $this->set('_serialize', ['client',]);
     }
 
     /**

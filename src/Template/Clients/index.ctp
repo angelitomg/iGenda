@@ -1,5 +1,6 @@
 <?php $this->assign('title', __('Clients')); ?>
 <?php $this->assign('description', __('All your clients can be managed in this section.')); ?>
+<?php $clientName = (isset($this->request->query['name'])) ? $this->request->query['name'] : ''; ?>
 
 <div class="row">
 
@@ -16,6 +17,31 @@
           <p><?= __('You have not registered any client. Click the New Client button to add a new client.') ?></p>
       </div>
     <?php endif; ?>
+
+
+    <?= $this->Form->create('Clients', ['type' => 'get']) ?>
+
+    <!-- general form elements -->
+    <div class="box box-primary">
+      <div class="box-header">
+        <h3 class="box-title"><?= __('Search Clients') ?></h3>
+      </div><!-- /.box-header -->
+      <!-- form start -->
+      <form role="form">
+        <div class="box-body">
+          <div class="form-group">
+            <label for="name"><?= __('Name') ?></label>
+            <?= $this->Form->input('name', ['label' => false, 'class' => 'form-control', 'value' => h($clientName)]) ?>
+          </div>
+        </div><!-- /.box-body -->
+
+        <div class="box-footer">
+          <?= $this->Form->button(__('Search'), ['class' => 'btn btn-primary']) ?>
+        </div>
+      </form>
+    </div><!-- /.box -->
+
+    <?= $this->Form->end() ?>
 
     <div class="box">
 

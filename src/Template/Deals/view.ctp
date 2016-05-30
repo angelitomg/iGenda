@@ -1,26 +1,9 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Deal'), ['action' => 'edit', $deal->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Deal'), ['action' => 'delete', $deal->id], ['confirm' => __('Are you sure you want to delete # {0}?', $deal->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Deals'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Deal'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Clients'), ['controller' => 'Clients', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Client'), ['controller' => 'Clients', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Companies'), ['controller' => 'Companies', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Company'), ['controller' => 'Companies', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Services'), ['controller' => 'Services', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Service'), ['controller' => 'Services', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
 <div class="deals view large-9 medium-8 columns content">
     <h3><?= h($deal->name) ?></h3>
     <table class="vertical-table">
         <tr>
             <th><?= __('Client') ?></th>
-            <td><?= $deal->has('client') ? $this->Html->link($deal->client->name, ['controller' => 'Clients', 'action' => 'view', $deal->client->id]) : '' ?></td>
+            <td><?= $deal->client->name ?></td>
         </tr>
         <tr>
             <th><?= __('Name') ?></th>
