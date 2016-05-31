@@ -350,6 +350,7 @@ class UsersController extends AppController
                 }
 
                 $this->Auth->setUser($user);
+
                 return $this->redirect($this->Auth->redirectUrl());
 
 
