@@ -12,7 +12,7 @@
 
             <div class="form-group">
               <label><?= __('Birthdate'); ?></label>
-              <?= $this->Form->input('birthdate', ['class' => 'form-control', 'label' => false]) ?>
+              <?= $this->Form->input('birthdate', ['class' => 'form-control', 'label' => false, 'minYear' => date('Y') - 100, 'maxYear' => date('Y')]) ?>
             </div>
 
             <div class="form-group">

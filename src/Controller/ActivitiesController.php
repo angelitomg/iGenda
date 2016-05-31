@@ -19,8 +19,26 @@ class ActivitiesController extends AppController
     public function index()
     {
 
+        $where['Activities.company_id'] = get_company_id();
+        if (!empty($this->request->query['client_id'])) $where['Activities.client_id'] = $this->request->query['client_id'];
+        if (!empty($this->request->query['activity_type_id'])) $where['Activities.activity_type_id'] = $this->request->query['activity_type_id'];
+        if (!empty($this->request->query['status'])) $where['Activities.status'] = $this->request->query['status'];
+
+
+        $emptyDate = ['year' => '', 'month' => '', 'day' => ''];
+        $startDate = (isset($this->request->query['start_date'])) ? $this->request->query['start_date'] : $emptyDate;
+        $endDate = (isset($this->request->query['end_date'])) ? $this->request->query['end_date'] : $emptyDate;
+        
+        if (!empty($startDate['year']) && !empty($startDate['month']) && !empty($startDate['day'])) {
+            $where['Activities.start_date >='] = $startDate['year'] . '-' . $startDate['month'] . '-' . $startDate['day'];
+        }
+
+        if (!empty($endDate['year']) && !empty($endDate['month']) && !empty($endDate['day'])) {
+            $where['Activities.start_date <='] = $endDate['year'] . '-' . $endDate['month'] . '-' . $endDate['day'];
+        }
+
         $activity = $this->Activities->newEntity();
-        $query = $this->Activities->find()->contain(['Clients', 'ActivityTypes'])->where(['Activities.company_id' => get_company_id()]);
+        $query = $this->Activities->find()->contain(['Clients', 'ActivityTypes'])->where($where);
         $activities = $this->paginate($query);
 
         $clients = $this->Activities->Clients->find('list');

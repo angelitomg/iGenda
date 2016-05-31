@@ -70,16 +70,25 @@
             </tr>
             </thead>
             <tbody>
+            <?php $total = 0; ?>
             <?php foreach ($deal->deal_services as $deal_service): ?>
             <tr>
                 <td><?= h($deal_service->name) ?></td>
                 <td><?= $this->Number->format($deal_service->quantity) ?></td>
                 <td><?= $this->Number->currency($deal_service->price) ?></td>
                 <td>
-                    <?= $this->Number->currency($deal_service->quantity * $deal_service->price) ?>
+                    <?php 
+                      $serviceTotal = $deal_service->quantity * $deal_service->price;
+                      $total += $serviceTotal;
+                    ?>
+                    <?= $this->Number->currency($serviceTotal) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
+            <tr>
+              <td colspan="3" class="text-right"><strong><?= __('Total') ?>:</strong> </td>
+              <td><?= $this->Number->currency($total) ?></td>
+            </tr>
             </tbody>
         </table>
       </div>

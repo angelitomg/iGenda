@@ -1,3 +1,12 @@
+<?php
+
+    $params = $this->request->query;
+    $values['client_id'] = (isset($params['client_id'])) ? $params['client_id'] : '';
+    $values['activity_type_id'] = (isset($params['client_id'])) ? $params['client_id'] : '';
+    $values['status'] = (isset($params['client_id'])) ? $params['client_id'] : '';
+
+?>
+
 <?php $this->assign('title', __('Activities')); ?>
 <?php $this->assign('description', __('Here you can create and edit your activities.')); ?>
 
@@ -22,7 +31,7 @@
       <?= $this->Form->create(null, ['type' => 'get']) ?>
 
       <div class="box-header">
-        <h3 class="box-title">Busca de Pedidos</h3>
+        <h3 class="box-title"><?= __('Activities Search') ?></h3>
       </div><!-- /.box-header -->
       <div class="box-body">
 
@@ -30,13 +39,13 @@
 
           <div class="col-xs-4">
             <div class="form-group">
-              <?= $this->Form->input('client_id', ['class' => 'form-control', 'options' => $clients, 'empty' => __('All')]) ?>
+              <?= $this->Form->input('client_id', ['class' => 'form-control', 'options' => $clients, 'empty' => __('All'), 'value' => $values['client_id']]) ?>
             </div>
           </div>
 
           <div class="col-xs-2">
             <div class="form-group">
-              <?= $this->Form->input('activity_type_id', ['class' => 'form-control', 'options' => $activityTypes, 'empty' => __('All')]) ?>
+              <?= $this->Form->input('activity_type_id', ['class' => 'form-control', 'options' => $activityTypes, 'empty' => __('All'), 'value' => $values['activity_type_id']]) ?>
               
             </div>
           </div>
@@ -61,7 +70,7 @@
 
           <div class="col-xs-2">
             <div class="form-group">
-              <?= $this->Form->input('status', ['class' => 'form-control', 'options' => $statusList, 'empty' => __('All')]) ?>
+              <?= $this->Form->input('status', ['class' => 'form-control', 'options' => $statusList, 'empty' => __('All'), 'value' => $values['status']]) ?>
             </div>
           </div>
 

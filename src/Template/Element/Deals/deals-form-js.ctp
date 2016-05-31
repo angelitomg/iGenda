@@ -74,6 +74,7 @@
         // When service quantity is changed
         $('.services-list').on('keyup', '.service-quantity', function(){
             var row_id = $(this).attr('data-row-id');
+            $(this).val($(this).val().replace(',', '.'));
             calcServicePrice(row_id);
         });
 
@@ -110,7 +111,9 @@
 
         // Calculate total service price
         function calcTotalPrice(quantity, price) {
-            return parseFloat(quantity * price).toFixed(2);
+            var total = parseFloat(quantity * price).toFixed(2);
+            if (isNaN(total)) total = 0;
+            return total;
         }
 
         // Calculate total amount

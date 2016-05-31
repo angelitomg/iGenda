@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="form-group">
-                  <?= $this->Form->input('amount', ['class' => 'form-control', 'value' => '0', 'readonly' => 'readonly']) ?>
+                  <?= $this->Form->input('amount', ['class' => 'form-control', 'value' => '0', 'label' => __('Total'), 'readonly' => 'readonly']) ?>
                 </div>
 
             </div><!-- /.box-body -->
@@ -72,3 +72,7 @@
     <input type="hidden" id="service-price-list-<?= $service->id ?>" value="<?= $service->price ?>" />
   <?php endforeach; ?>
 <?php endif; ?>
+
+<style type="text/css">
+.input .date select { width: 30%; }
+</style>
