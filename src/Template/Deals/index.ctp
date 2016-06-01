@@ -1,3 +1,14 @@
+<?php
+
+    $params = $this->request->query;
+    $values['client_id'] = (isset($params['client_id'])) ? $params['client_id'] : '';
+    $values['status'] = (isset($params['client_id'])) ? $params['client_id'] : '';
+
+    $values['start_date'] = (isset($this->request->query['start_date'])) ? $this->request->query['start_date'] : '';
+    $values['end_date'] = (isset($this->request->query['end_date'])) ? $this->request->query['end_date'] : '';
+
+?>
+
 <?php $this->assign('title', __('Deals')); ?>
 <?php $this->assign('description', __('Here you can manage your deals.')); ?>
 
@@ -16,6 +27,59 @@
           <p><?= __('You have not registered any deal. Click the New Deal button to add a new deal.') ?></p>
       </div>
     <?php endif; ?>
+
+    <div class="box box-primary">
+
+      <?= $this->Form->create(null, ['type' => 'get']) ?>
+
+      <div class="box-header">
+        <h3 class="box-title"><?= __('Deals Search') ?></h3>
+      </div><!-- /.box-header -->
+      <div class="box-body">
+
+        <div class="row">
+
+          <div class="col-xs-4">
+            <div class="form-group">
+              <?= $this->Form->input('client_id', ['class' => 'form-control', 'options' => $clients, 'empty' => __('All'), 'value' => $values['client_id']]) ?>
+            </div>
+          </div>
+
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label for="start_date"><?= __('Start Date') ?></label>
+              <div class="input-group">
+                  <?= $this->Form->date('start_date', ['class' => 'form-control', 'value' => $values['start_date']]) ?>
+              </div><!-- /.input group -->
+            </div>
+          </div>
+
+          <div class="col-xs-3">
+            <div class="form-group">
+              <label for="start_date"><?= __('End Date') ?></label>
+              <div class="input-group">
+                  <?= $this->Form->date('end_date', ['class' => 'form-control', 'value' => $values['end_date']]) ?>
+              </div><!-- /.input group -->
+            </div>
+          </div>
+
+          <div class="col-xs-2">
+            <div class="form-group">
+              <?= $this->Form->input('status', ['class' => 'form-control', 'options' => $statusList, 'empty' => __('All'), 'value' => $values['status']]) ?>
+            </div>
+          </div>
+
+        </div>
+
+      </div><!-- /.box-body -->
+
+        <div class="box-footer">
+          <?= $this->Form->button(__('Search'), ['class' => 'btn btn-primary']) ?>
+        </div>
+
+      <?= $this->Form->end() ?>
+
+    </div><!-- /.box -->
 
     <div class="box">
 

@@ -144,6 +144,9 @@ class UsersController extends AppController
         // No layout
         $this->viewBuilder()->layout(false);
 
+        // Allow only if user not logged
+        if ($this->Auth->user()) $this->redirect('/');
+
         if ($this->request->is('post')) {
 
             // Get data
@@ -171,6 +174,7 @@ class UsersController extends AppController
 
             // Create user
             $user = $this->Users->newEntity();
+            $user->name = $companyName;
             $user->email = $email;
             $user->password = $password;
             $user->company_id = $company->id;
@@ -231,9 +235,7 @@ class UsersController extends AppController
         $this->viewBuilder()->layout(false);
 
         // Allow only if user not logged
-        //print_r($this->Auth->user());
-        //die();
-        //if ($this->Auth->user()) $this->redirect('/');
+        if ($this->Auth->user()) $this->redirect('/');
 
         if ($this->request->is('post')) {
 
@@ -350,7 +352,6 @@ class UsersController extends AppController
                 }
 
                 $this->Auth->setUser($user);
-
                 return $this->redirect($this->Auth->redirectUrl());
 
 

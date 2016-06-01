@@ -22,7 +22,32 @@ class DealsController extends AppController
         $query = $this->Deals->find()->contain(['Clients'])->where(['Deals.company_id' => get_company_id()]);
         $deals = $this->paginate($query);
 
-        $this->set(compact('deals'));
+
+        $where['Deals.company_id'] = get_company_id();
+        if (!empty($this->request->query['client_id'])) $where['Deals.client_id'] = $this->request->query['client_id'];
+        if (!empty($this->request->query['status'])) $where['Deals.status'] = $this->request->query['status'];
+
+        $emptyDate = ['year' => '', 'month' => '', 'day' => ''];
+        $startDate = (isset($this->request->query['start_date'])) ? $this->request->query['start_date'] : $emptyDate;
+        $endDate = (isset($this->request->query['end_date'])) ? $this->request->query['end_date'] : $emptyDate;
+        
+        if (!empty($startDate['year']) && !empty($startDate['month']) && !empty($startDate['day'])) {
+            $where['Deals.start_date >='] = $startDate['year'] . '-' . $startDate['month'] . '-' . $startDate['day'] . ' 00:00:00';
+        }
+
+        if (!empty($endDate['year']) && !empty($endDate['month']) && !empty($endDate['day'])) {
+            $where['Deals.end_date <='] = $endDate['year'] . '-' . $endDate['month'] . '-' . $endDate['day'] . ' 23:59:59';
+        }
+
+        $deal = $this->Deals->newEntity();
+        $query = $this->Deals->find()->contain(['Clients'])->where($where);
+
+        $deals = $this->paginate($query);
+
+        $clients = $this->Deals->Clients->find('list');
+        $statusList = $deal->getStatusList();
+
+        $this->set(compact('deals', 'clients', 'statusList'));
         $this->set('_serialize', ['deals']);
     }
 

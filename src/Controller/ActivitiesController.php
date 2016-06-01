@@ -24,21 +24,21 @@ class ActivitiesController extends AppController
         if (!empty($this->request->query['activity_type_id'])) $where['Activities.activity_type_id'] = $this->request->query['activity_type_id'];
         if (!empty($this->request->query['status'])) $where['Activities.status'] = $this->request->query['status'];
 
-
         $emptyDate = ['year' => '', 'month' => '', 'day' => ''];
         $startDate = (isset($this->request->query['start_date'])) ? $this->request->query['start_date'] : $emptyDate;
         $endDate = (isset($this->request->query['end_date'])) ? $this->request->query['end_date'] : $emptyDate;
         
         if (!empty($startDate['year']) && !empty($startDate['month']) && !empty($startDate['day'])) {
-            $where['Activities.start_date >='] = $startDate['year'] . '-' . $startDate['month'] . '-' . $startDate['day'];
+            $where['Activities.start_date >='] = $startDate['year'] . '-' . $startDate['month'] . '-' . $startDate['day'] . ' 00:00:00';
         }
 
         if (!empty($endDate['year']) && !empty($endDate['month']) && !empty($endDate['day'])) {
-            $where['Activities.start_date <='] = $endDate['year'] . '-' . $endDate['month'] . '-' . $endDate['day'];
+            $where['Activities.end_date <='] = $endDate['year'] . '-' . $endDate['month'] . '-' . $endDate['day'] . ' 23:59:59';
         }
 
         $activity = $this->Activities->newEntity();
         $query = $this->Activities->find()->contain(['Clients', 'ActivityTypes'])->where($where);
+
         $activities = $this->paginate($query);
 
         $clients = $this->Activities->Clients->find('list');

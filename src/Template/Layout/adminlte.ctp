@@ -28,6 +28,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
   <link rel="stylesheet" href="<?= $this->Url->build('/') ?>/bower_components/AdminLTE/dist/css/skins/skin-blue.min.css">
   <link rel="stylesheet" href="<?= $this->Url->build('/') ?>/css/extra.css">
+  <link rel="shortcut icon" src="<?= $this->Url->build('/') ?>/favicon.ico" />
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -5,6 +5,9 @@
     $values['activity_type_id'] = (isset($params['client_id'])) ? $params['client_id'] : '';
     $values['status'] = (isset($params['client_id'])) ? $params['client_id'] : '';
 
+    $values['start_date'] = (isset($this->request->query['start_date'])) ? $this->request->query['start_date'] : '';
+    $values['end_date'] = (isset($this->request->query['end_date'])) ? $this->request->query['end_date'] : '';
+
 ?>
 
 <?php $this->assign('title', __('Activities')); ?>
@@ -54,7 +57,7 @@
             <div class="form-group">
               <label for="start_date"><?= __('Start Date') ?></label>
               <div class="input-group">
-                  <?= $this->Form->date('start_date', ['class' => 'form-control']) ?>
+                  <?= $this->Form->date('start_date', ['class' => 'form-control', 'value' => $values['start_date']]) ?>
               </div><!-- /.input group -->
             </div>
           </div>
@@ -63,7 +66,7 @@
             <div class="form-group">
               <label for="start_date"><?= __('End Date') ?></label>
               <div class="input-group">
-                  <?= $this->Form->date('end_date', ['class' => 'form-control']) ?>
+                  <?= $this->Form->date('end_date', ['class' => 'form-control', 'value' => $values['end_date']]) ?>
               </div><!-- /.input group -->
             </div>
           </div>

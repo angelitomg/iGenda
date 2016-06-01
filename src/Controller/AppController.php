@@ -77,7 +77,7 @@ class AppController extends Controller
 
         if (in_array($path, $allowed_actions)) return true;
 
-        if (in_array($path, $user['permissions'])) return true;
+        if (in_array($path, $this->Auth->user()['permissions'])) return true;
 
         // Default deny
         $this->Flash->error(__('You cannot access this area.'));
