@@ -244,3 +244,10 @@ function get_user_id() {
         : 0;
     return $user_id;
 }
+
+function format_date($date) {
+    $remove = ['/AM/', '/PM/', '/[0-9]+:[0-9]+/', '/,/'];
+    $date = preg_replace($remove, '', $date);
+    $date = str_replace('', '', $date);
+    return $date;
+}

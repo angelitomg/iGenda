@@ -66,40 +66,6 @@ class ClientsTable extends Table
             ->requirePresence('name', 'create')
             ->notEmpty('name');
 
-        $validator
-            ->date('birthdate')
-            ->requirePresence('birthdate', 'create')
-            ->notEmpty('birthdate');
-
-        $validator
-            ->requirePresence('document1', 'create')
-            ->notEmpty('document1');
-
-        $validator
-            ->requirePresence('document2', 'create')
-            ->notEmpty('document2');
-
-        $validator
-            ->requirePresence('address', 'create')
-            ->notEmpty('address');
-
-        $validator
-            ->requirePresence('phone', 'create')
-            ->notEmpty('phone');
-
-        $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email');
-
-        $validator
-            ->requirePresence('site', 'create')
-            ->notEmpty('site');
-
-        $validator
-            ->requirePresence('contact_name', 'create')
-            ->notEmpty('contact_name');
-
         return $validator;
     }
 
@@ -112,7 +78,6 @@ class ClientsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['company_id'], 'Companies'));
         return $rules;
