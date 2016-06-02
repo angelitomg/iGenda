@@ -1,6 +1,7 @@
 <?php use \Cake\Core\Configure; ?>
 <?php
     $controller = $this->request->params['controller'];
+    $action = $this->request->params['action'];
 ?>
 <!DOCTYPE html>
 <!--
@@ -74,7 +75,7 @@ desired effect
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="<?= $this->Url->build('/') ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><i class="fa fa-book"></i></span>
       <!-- logo for regular state and mobile devices -->
@@ -280,7 +281,9 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">MENU</li>
 
-        <li><a href="#"><i class="fa fa-dashboard"></i> <span><?= __('Home') ?></span></a></li>
+        <li <?php if ($controller == 'Dashboard') echo 'class="active"'; ?>>
+          <a href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>"><i class="fa fa-dashboard"></i> <span><?= __('Home') ?></span></a>
+        </li>
 
         <li <?php if ($controller == 'Activities') echo 'class="active"'; ?>>
           <a href="<?= $this->Url->build(['controller' => 'Activities', 'action' => 'index']) ?>">
@@ -292,6 +295,12 @@ desired effect
         <li <?php if ($controller == 'ActivityTypes') echo 'class="active"'; ?>>
           <a href="<?= $this->Url->build(['controller' => 'ActivityTypes', 'action' => 'index']) ?>">
             <i class="fa fa-list"></i><span><?= __('Activity Types') ?></span>
+          </a>
+        </li>
+
+        <li <?php if ($action == 'calendar') echo 'class="active"'; ?>>
+          <a href="<?= $this->Url->build(['controller' => 'Activities', 'action' => 'calendar']) ?>">
+            <i class="fa fa-calendar"></i><span><?= __('Calendar') ?></span>
           </a>
         </li>
 
@@ -313,10 +322,12 @@ desired effect
           </a>
         </li>
 
-        <li <?php if ($controller == 'Reports') echo 'class="active"'; ?>>
-          <a href="<?= $this->Url->build(['controller' => 'Reports', 'action' => 'index']) ?>">
-            <i class="fa fa-line-chart"></i><span><?= __('Reports') ?></span>
-          </a>
+        <li class="treeview <?php if ($action == 'report') echo 'active'; ?>">
+          <a href="#"><i class="fa fa-line-chart"></i> <span><?= __('Reports') ?></span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a href="<?= $this->Url->build(['controller' => 'Activities', 'action' => 'report']) ?>"><?= __('Activities') ?></a></li>
+            <li><a href="<?= $this->Url->build(['controller' => 'Deals', 'action' => 'report']) ?>"><?= __('Deals') ?></a></li>
+          </ul>
         </li>
 
         <li <?php if ($controller == 'Services') echo 'class="active"'; ?>>

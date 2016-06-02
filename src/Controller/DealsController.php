@@ -28,15 +28,25 @@ class DealsController extends AppController
         if (!empty($this->request->query['status'])) $where['Deals.status'] = $this->request->query['status'];
 
         $emptyDate = ['year' => '', 'month' => '', 'day' => ''];
-        $startDate = (isset($this->request->query['start_date'])) ? $this->request->query['start_date'] : $emptyDate;
-        $endDate = (isset($this->request->query['end_date'])) ? $this->request->query['end_date'] : $emptyDate;
+        $startDate1 = (isset($this->request->query['start_date1'])) ? $this->request->query['start_date1'] : $emptyDate;
+        $startDate2 = (isset($this->request->query['start_date2'])) ? $this->request->query['start_date2'] : $emptyDate;
+        $endDate1 = (isset($this->request->query['end_date1'])) ? $this->request->query['end_date1'] : $emptyDate;
+        $endDate2 = (isset($this->request->query['end_date2'])) ? $this->request->query['end_date2'] : $emptyDate;
         
-        if (!empty($startDate['year']) && !empty($startDate['month']) && !empty($startDate['day'])) {
-            $where['Deals.start_date >='] = $startDate['year'] . '-' . $startDate['month'] . '-' . $startDate['day'] . ' 00:00:00';
+        if (!empty($startDate1['year']) && !empty($startDate1['month']) && !empty($startDate1['day'])) {
+            $where['Deals.start_date >='] = $startDate1['year'] . '-' . $startDate1['month'] . '-' . $startDate1['day'] . ' 00:00:00';
         }
 
-        if (!empty($endDate['year']) && !empty($endDate['month']) && !empty($endDate['day'])) {
-            $where['Deals.end_date <='] = $endDate['year'] . '-' . $endDate['month'] . '-' . $endDate['day'] . ' 23:59:59';
+        if (!empty($startDate2['year']) && !empty($startDate2['month']) && !empty($startDate2['day'])) {
+            $where['Deals.start_date <='] = $startDate2['year'] . '-' . $startDate2['month'] . '-' . $startDate2['day'] . ' 23:59:59';
+        }
+
+        if (!empty($endDate1['year']) && !empty($endDate1['month']) && !empty($endDate1['day'])) {
+            $where['Deals.end_date >='] = $endDate1['year'] . '-' . $endDate1['month'] . '-' . $endDate1['day'] . ' 00:00:00';
+        }
+
+        if (!empty($endDate2['year']) && !empty($endDate2['month']) && !empty($endDate2['day'])) {
+            $where['Deals.end_date <='] = $endDate2['year'] . '-' . $endDate2['month'] . '-' . $endDate2['day'] . ' 23:59:59';
         }
 
         $deal = $this->Deals->newEntity();
