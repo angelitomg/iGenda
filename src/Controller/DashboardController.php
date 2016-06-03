@@ -31,7 +31,7 @@ class DashboardController extends AppController
         $whereCompletedActivities = [
             'Activities.company_id' => $company_id,
             'Activities.status' => 40, // Only completed activities
-            'Activities.end_date >=' => 'DATE(NOW()) - INTERVAL 7 DAY'
+            'Activities.end_date >=' => date('Y-m-d', strtotime('-1 week')) . ' 00:00:00'
         ];
         $totalCompletedActivities = $this->Activities->find('all', ['conditions' => $whereCompletedActivities])->count();
 

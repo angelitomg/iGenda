@@ -112,14 +112,7 @@
                 <td><?= h($deal->start_date) ?></td>
                 <td><?= h($deal->end_date) ?></td>
                 <td>
-                    <?php
-                        $css_class = '';
-                        if ($deal->status > 0  && $deal->status <= 10) $css_class = 'label-warning';
-                        if ($deal->status > 10 && $deal->status <= 20) $css_class = 'label-info';
-                        if ($deal->status > 20 && $deal->status <= 30) $css_class = 'label-danger';
-                        if ($deal->status > 30 && $deal->status <= 40) $css_class = 'label-success';
-                    ?>
-                    <span class="label <?= $css_class ?>"><?= h($deal->getStatus($deal->status)) ?></span> 
+                    <?= $deal->getStatus($deal->status) ?>
                 </td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $deal->id]) ?>

@@ -84,14 +84,7 @@
                 <td><?= h($activity->start_date) ?></td>
                 <td><?= h($activity->end_date) ?></td>
                 <td>
-                  <?php
-                      $css_class = '';
-                      if ($activity->status > 0  && $activity->status <= 10) $css_class = 'label-warning';
-                      if ($activity->status > 10 && $activity->status <= 20) $css_class = 'label-info';
-                      if ($activity->status > 20 && $activity->status <= 30) $css_class = 'label-danger';
-                      if ($activity->status > 30 && $activity->status <= 40) $css_class = 'label-success';
-                  ?>
-                  <span class="label <?= $css_class ?>"><?= h($activity->getStatus($activity->status)) ?></span>  
+                  <?= $activity->getStatus($activity->status) ?>
                 </td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Activities', 'action' => 'view', $activity->id]) ?>
@@ -132,14 +125,7 @@
                 <td><?= h($deal->end_date) ?></td>
                 <td><?= $this->Number->currency($deal->amount) ?></td>
                 <td>
-                  <?php
-                      $css_class = '';
-                      if ($deal->status > 0  && $deal->status <= 10) $css_class = 'label-warning';
-                      if ($deal->status > 10 && $deal->status <= 20) $css_class = 'label-info';
-                      if ($deal->status > 20 && $deal->status <= 30) $css_class = 'label-danger';
-                      if ($deal->status > 30 && $deal->status <= 40) $css_class = 'label-success';
-                  ?>
-                  <span class="label <?= $css_class ?>"><?= h($deal->getStatus($deal->status)) ?></span>  
+                  <?= $deal->getStatus($deal->status) ?>
                 </td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Deals', 'action' => 'view', $deal->id]) ?>

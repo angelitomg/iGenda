@@ -83,20 +83,29 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body table-responsive with-border">
-          <table class="table table-hover">
-            <tr>
-              <th><?= __('Type') ?></th>
-              <th><?= __('Client') ?></th>
-              <th><?= __('Status') ?></th>
-              <th></th>
-            </tr>
-            <?php foreach ($todayActivities as $activity): ?>
+          <?php if ($todayActivities->isEmpty()): ?>
+            <?= __('No activities for today.') ?>
+          <?php else: ?>
+            <table class="table table-hover">
               <tr>
-                <td><?= $activity->activity_types->name ?></td>
-                <td><?= $activity->client->name ?></td>
-                <td><?= $activity->getStatus($activity->status) ?></td>
-            <?php endforeach; ?>
-          </table>
+                <th><?= __('Type') ?></th>
+                <th><?= __('Client') ?></th>
+                <th><?= __('Status') ?></th>
+                <th></th>
+              </tr>
+              <?php foreach ($todayActivities as $activity): ?>
+                <tr>
+                  <td><?= $activity->activity_type->name ?></td>
+                  <td><?= $activity->client->name ?></td>
+                  <td><?= $activity->getStatus($activity->status) ?></td>
+                  <td>
+                    <?= $this->Html->link(__('View'), ['controller' => 'Activities', 'action' => 'view', $activity->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Activities', 'action' => 'edit', $activity->id]) ?>
+                  </td>
+
+              <?php endforeach; ?>
+            </table>
+          <?php endif; ?>
         </div>
         <!-- /.box-body -->
       </div>
