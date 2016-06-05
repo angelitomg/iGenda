@@ -25,12 +25,14 @@ use Cake\ORM\Entity;
 class Activity extends Entity
 {
 
+    const ACTIVITY_STATUS_CANCELED = 0;
     const ACTIVITY_STATUS_PENDING = 10;
     const ACTIVITY_STATUS_IN_PROGRESS = 20;
     const ACTIVITY_STATUS_WAITING = 30;
     const ACTIVITY_STATUS_COMPLETE = 40;
 
     protected $statusList = [
+        self::ACTIVITY_STATUS_CANCELED => 'Canceled', 
         self::ACTIVITY_STATUS_PENDING => 'Pending', 
         self::ACTIVITY_STATUS_IN_PROGRESS => 'In Progress',
         self::ACTIVITY_STATUS_WAITING => 'Waiting',
@@ -47,11 +49,20 @@ class Activity extends Entity
 
     public function getStatus($status){
         $statusName = (isset($this->statusList[$status])) ? __($this->statusList[$status]) : '';
-        if ($status > 0  && $status <= 10) $css_class = 'text-yellow';
-        if ($status > 10 && $status <= 20) $css_class = 'text-light-blue';
-        if ($status > 20 && $status <= 30) $css_class = 'text-red';
-        if ($status > 30 && $status <= 40) $css_class = 'text-green';
+        if ($status == 0) $css_class = 'text-red';
+        if ($status == 10) $css_class = 'text-yellow';
+        if ($status == 20) $css_class = 'text-light-blue';
+        if ($status == 30) $css_class = 'text-red';
+        if ($status == 40) $css_class = 'text-green';
         return "<span class='{$css_class}'>{$statusName}</span>";
+    }
+
+    public function getActivityColor($status) {
+        if ($status == 0) return '#dd4b39';
+        if ($status == 10) return '#f39c12';
+        if ($status == 20) return '#3c8dbc';
+        if ($status == 30) return '#dd4b39';
+        if ($status == 40) return '#00a65a';
     }
 
     /**

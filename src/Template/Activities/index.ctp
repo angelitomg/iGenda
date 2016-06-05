@@ -42,12 +42,11 @@
 
         <div class="row">
 
-          <div class="col-xs-4">
+          <div class="col-xs-2">
             <div class="form-group">
               <?= $this->Form->input('client_id', ['class' => 'form-control', 'options' => $clients, 'empty' => __('All'), 'value' => $values['client_id']]) ?>
             </div>
           </div>
-
           <div class="col-xs-2">
             <div class="form-group">
               <?= $this->Form->input('activity_type_id', ['class' => 'form-control', 'options' => $activityTypes, 'empty' => __('All'), 'value' => $values['activity_type_id']]) ?>
@@ -55,7 +54,7 @@
             </div>
           </div>
 
-          <div class="col-xs-2">
+          <div class="col-xs-3">
             <div class="form-group">
               <label for="start_date"><?= __('Start Date') ?></label>
               <div class="input-group">
@@ -65,7 +64,7 @@
             </div>
           </div>
 
-          <div class="col-xs-2">
+          <div class="col-xs-3">
             <div class="form-group">
               <label for="start_date"><?= __('End Date') ?></label>
               <div class="input-group">
@@ -108,13 +107,6 @@
               <th><?= $this->Paginator->sort('end_date') ?></th>
               <th><?= $this->Paginator->sort('status') ?></th>
               <th><?= __('Actions') ?></th>
-            </tr>
-
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
             </tr>
 
             <?php foreach ($activities as $activity): ?>

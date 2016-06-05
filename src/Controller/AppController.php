@@ -72,7 +72,8 @@ class AppController extends Controller
 
         // Allowed actions to all users
         $allowed_actions = [
-            'Users/logout', 'Users/login', 'Users/register', 'Users/recoveryPassword', 'Users/confirm', 'Dashboard/index'
+            'Users/logout', 'Users/login', 'Users/register', 'Users/recoveryPassword', 
+            'Users/confirm', 'Dashboard/index', 'Activities/calendarJSON'
         ];
 
         if (in_array($path, $allowed_actions)) return true;

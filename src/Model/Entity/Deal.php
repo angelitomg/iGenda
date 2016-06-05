@@ -27,12 +27,14 @@ use Cake\ORM\Entity;
 class Deal extends Entity
 {
 
+    const DEAL_STATUS_CANCELED = 0;
     const DEAL_STATUS_PENDING = 10;
     const DEAL_STATUS_IN_PROGRESS = 20;
     const DEAL_STATUS_WAITING = 30;
     const DEAL_STATUS_COMPLETE = 40;
 
     protected $statusList = [
+        self::DEAL_STATUS_CANCELED => 'Canceled',
         self::DEAL_STATUS_PENDING => 'Pending', 
         self::DEAL_STATUS_IN_PROGRESS => 'In Progress',
         self::DEAL_STATUS_WAITING => 'Waiting',
@@ -49,10 +51,11 @@ class Deal extends Entity
 
     public function getStatus($status){
         $statusName = (isset($this->statusList[$status])) ? __($this->statusList[$status]) : '';
-        if ($status > 0  && $status <= 10) $css_class = 'text-yellow';
-        if ($status > 10 && $status <= 20) $css_class = 'text-light-blue';
-        if ($status > 20 && $status <= 30) $css_class = 'text-red';
-        if ($status > 30 && $status <= 40) $css_class = 'text-green';
+        if ($status == 0) $css_class = 'text-red';
+        if ($status == 10) $css_class = 'text-yellow';
+        if ($status == 20) $css_class = 'text-light-blue';
+        if ($status == 30) $css_class = 'text-red';
+        if ($status == 40) $css_class = 'text-green';
         return "<span class='{$css_class}'>{$statusName}</span>";
     }
 

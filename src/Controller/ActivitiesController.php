@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Routing\Router;
 
 /**
  * Activities Controller
@@ -155,4 +156,57 @@ class ActivitiesController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * Calendar method
+     *
+     * @param string $date
+     */
+    public function calendar($date = '')
+    {
+
+    }
+
+    /**
+     * Calendar JSON method
+     *
+     */ 
+    public function calendarJSON() 
+    {
+
+        // No layout
+        $this->autoRender = NULL;
+        $this->viewBuilder()->layout(false);
+
+        $startDate = $this->request->query['start'];
+        $endDate = $this->request->query['end'];
+
+        $where = [
+            'Activities.company_id' => get_company_id(),
+            'Activities.start_date >=' => $startDate,
+            'Activities.start_date <=' => $endDate,
+            'Activities.end_date >=' => $startDate,
+            'Activities.end_date <=' => $endDate,
+
+        ];
+
+        $activities = [];
+        $query = $this->Activities->find('all')->contain(['ActivityTypes'])->where($where);
+
+        foreach ($query as $q) {
+            $color = $q->getActivityColor($q->status);
+            $activities[] = [
+                'title' => $q->activity_type->name,
+                'start' =>  $q->start_date,
+                'end' =>  $q->end_date,
+                'url' => Router::url(['controller' => 'Activities', 'action' => 'view', $q->id]),
+                'backgroundColor' => $color, 
+                'borderColor' => $color 
+            ];
+        }
+
+        echo json_encode($activities);
+
+    }
+
 }
