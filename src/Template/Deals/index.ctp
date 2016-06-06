@@ -3,6 +3,7 @@
     $params = $this->request->query;
     $values['client_id'] = (isset($params['client_id'])) ? $params['client_id'] : '';
     $values['status'] = (isset($params['client_id'])) ? $params['client_id'] : '';
+    $values['name'] = (isset($params['name'])) ? $params['name'] : '';
 
     $values['start_date1'] = (isset($this->request->query['start_date1'])) ? $this->request->query['start_date1'] : '';
     $values['start_date2'] = (isset($this->request->query['start_date2'])) ? $this->request->query['start_date2'] : '';
@@ -22,7 +23,7 @@
         <?= $this->Html->link(__('New Deal'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
     </p>
 
-    <?php if ($deals->isEmpty()): ?>
+    <?php if ($total == 0): ?>
       <!-- Empty list message -->
       <div class="callout callout-info alert-empty-list" style="background-color: #3c8dbc !important;">
         <h4><?= __('Hello!') ?></h4>
@@ -41,16 +42,20 @@
 
         <div class="row">
 
-          <div class="col-xs-3">
+          <div class="col-xs-2">
             <div class="form-group">
               <?= $this->Form->input('client_id', ['class' => 'form-control', 'options' => $clients, 'empty' => __('All'), 'value' => $values['client_id']]) ?>
             </div>
           </div>
-          <div class="col-xs-1"></div>
+
+          <div class="col-xs-2">
+              <?= $this->Form->input('name', ['class' => 'form-control', 'value' => $values['name']]) ?>
+          </div>
+
           <div class="col-xs-3">
-            <div class="form-group">
-              <label for="start_date"><?= __('Start Date') ?></label>
-              <div class="input-group">
+            <div class="form-group text-center">
+              <label><?= __('Start Date') ?></label>
+              <div class="input-group form-date-group">
                   <?= $this->Form->date('start_date1', ['class' => 'form-control', 'value' => $values['start_date1']]) ?><br>
                   <?= $this->Form->date('start_date2', ['class' => 'form-control', 'value' => $values['start_date2']]) ?>
               </div><!-- /.input group -->
@@ -58,9 +63,9 @@
           </div>
 
           <div class="col-xs-3">
-            <div class="form-group">
-              <label for="start_date"><?= __('End Date') ?></label>
-              <div class="input-group">
+            <div class="form-group text-center">
+              <label><?= __('End Date') ?></label>
+              <div class="input-group form-date-group">
                   <?= $this->Form->date('end_date1', ['class' => 'form-control', 'value' => $values['end_date1']]) ?><br>
                   <?= $this->Form->date('end_date2', ['class' => 'form-control', 'value' => $values['end_date2']]) ?>
               </div><!-- /.input group -->
@@ -124,6 +129,8 @@
           </tbody></table>
         </div>
         <!-- /.box-body -->
+
+        <?php if ($report == null): ?>
         <div class="box-footer clearfix">
           <ul class="pagination pagination-sm no-margin pull-right">
             <li><?= $this->Paginator->prev('< ' . __('previous')) ?></li>
@@ -131,6 +138,7 @@
             <li><?= $this->Paginator->next(__('next') . ' >') ?></li>
           </ul>
         </div>
+        <?php endif; ?>
     </div>
 
   </div>

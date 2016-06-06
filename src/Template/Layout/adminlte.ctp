@@ -75,7 +75,7 @@ desired effect
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="<?= $this->Url->build('/') ?>" class="logo">
+    <a href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><i class="fa fa-book"></i></span>
       <!-- logo for regular state and mobile devices -->
@@ -322,11 +322,11 @@ desired effect
           </a>
         </li>
 
-        <li class="treeview <?php if ($action == 'report') echo 'active'; ?>">
+        <li class="treeview <?php if (isset($this->request->pass[0]) && $this->request->pass[0] == 'report') echo 'active'; ?>">
           <a href="#"><i class="fa fa-line-chart"></i> <span><?= __('Reports') ?></span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li><a href="<?= $this->Url->build(['controller' => 'Activities', 'action' => 'report']) ?>"><?= __('Activities') ?></a></li>
-            <li><a href="<?= $this->Url->build(['controller' => 'Deals', 'action' => 'report']) ?>"><?= __('Deals') ?></a></li>
+            <li><a href="<?= $this->Url->build(['controller' => 'Activities', 'action' => 'index', 'report']) ?>"><?= __('Activities') ?></a></li>
+            <li><a href="<?= $this->Url->build(['controller' => 'Deals', 'action' => 'index', 'report']) ?>"><?= __('Deals') ?></a></li>
           </ul>
         </li>
 

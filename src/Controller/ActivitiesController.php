@@ -17,8 +17,10 @@ class ActivitiesController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
+    public function index($report = null)
     {
+
+        $total = $this->Activities->find()->where(['Activities.company_id' => get_company_id()])->count();
 
         $where['Activities.company_id'] = get_company_id();
         if (!empty($this->request->query['client_id'])) $where['Activities.client_id'] = $this->request->query['client_id'];
@@ -48,15 +50,16 @@ class ActivitiesController extends AppController
         }
         
         $activity = $this->Activities->newEntity();
-        $query = $this->Activities->find()->contain(['Clients', 'ActivityTypes'])->where($where);
+        $query = $this->Activities->find('all')->contain(['Clients', 'ActivityTypes'])->where($where);
 
-        $activities = $this->paginate($query);
+        // Check if is report
+        $activities = ($report == null) ? $this->paginate($query) : $query;
 
         $clients = $this->Activities->Clients->find('list');
         $activityTypes = $this->Activities->ActivityTypes->find('list');
         $statusList = $activity->getStatusList();
 
-        $this->set(compact('activities', 'activityTypes', 'clients', 'statusList'));
+        $this->set(compact('activities', 'activityTypes', 'clients', 'statusList', 'report', 'total'));
         $this->set('_serialize', ['activities']);
     }
 
@@ -160,9 +163,8 @@ class ActivitiesController extends AppController
     /**
      * Calendar method
      *
-     * @param string $date
      */
-    public function calendar($date = '')
+    public function calendar()
     {
 
     }
@@ -201,7 +203,7 @@ class ActivitiesController extends AppController
                 'end' =>  $q->end_date,
                 'url' => Router::url(['controller' => 'Activities', 'action' => 'view', $q->id]),
                 'backgroundColor' => $color, 
-                'borderColor' => $color 
+                'borderColor' => $color
             ];
         }
 

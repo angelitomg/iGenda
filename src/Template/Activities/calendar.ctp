@@ -1,5 +1,8 @@
 <?php use Cake\I18n\I18n; ?>
 
+<?php $this->assign('title', __('Calendar')); ?>
+<?php $this->assign('description', __('An overview of your activities.')); ?>
+
 <link rel="stylesheet" href="<?= $this->Url->build('/') ?>/bower_components/AdminLTE/plugins/fullcalendar/fullcalendar.min.css">
 <link rel="stylesheet" href="<?= $this->Url->build('/') ?>/bower_components/AdminLTE/plugins/fullcalendar/fullcalendar.print.css" media="print">
 

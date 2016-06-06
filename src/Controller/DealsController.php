@@ -16,16 +16,15 @@ class DealsController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function index()
+    public function index($report = null)
     {
 
-        $query = $this->Deals->find()->contain(['Clients'])->where(['Deals.company_id' => get_company_id()]);
-        $deals = $this->paginate($query);
-
+        $total = $this->Deals->find()->where(['Deals.company_id' => get_company_id()])->count();
 
         $where['Deals.company_id'] = get_company_id();
         if (!empty($this->request->query['client_id'])) $where['Deals.client_id'] = $this->request->query['client_id'];
         if (!empty($this->request->query['status'])) $where['Deals.status'] = $this->request->query['status'];
+        if (!empty($this->request->query['name'])) $where['Deals.name LIKE'] = '%' . $this->request->query['name'] . '%';
 
         $emptyDate = ['year' => '', 'month' => '', 'day' => ''];
         $startDate1 = (isset($this->request->query['start_date1'])) ? $this->request->query['start_date1'] : $emptyDate;
@@ -50,14 +49,15 @@ class DealsController extends AppController
         }
 
         $deal = $this->Deals->newEntity();
-        $query = $this->Deals->find()->contain(['Clients'])->where($where);
+        $query = $this->Deals->find('all')->contain(['Clients'])->where($where);
 
-        $deals = $this->paginate($query);
+        // Check if is report
+        $deals = ($report == null) ? $this->paginate($query) : $query;
 
         $clients = $this->Deals->Clients->find('list');
         $statusList = $deal->getStatusList();
 
-        $this->set(compact('deals', 'clients', 'statusList'));
+        $this->set(compact('deals', 'clients', 'statusList', 'report', 'total'));
         $this->set('_serialize', ['deals']);
     }
 

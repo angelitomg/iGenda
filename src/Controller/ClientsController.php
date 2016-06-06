@@ -22,7 +22,6 @@ class ClientsController extends AppController
         $name = isset($this->request->query['name']) ? $this->request->query['name'] : '';
 
         if (!empty($name)) {
-            $options = ['conditions' => ['Clients.name LIKE' => "%{$name}%"]];
             $where['Clients.name LIKE'] = "%{$name}%";
         }
         $where['Clients.company_id'] = get_company_id();
