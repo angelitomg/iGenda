@@ -12,6 +12,7 @@
           <h3><?= $totalClients; ?></h3>
 
           <p><?= __('Clients') ?></p>
+          <br>
         </div>
         <div class="icon">
           <i class="ion ion-person-stalker"></i>
@@ -28,7 +29,7 @@
         <div class="inner">
           <h3><?= $totalCompletedActivities ?></h3>
 
-          <p><?= __('Completed Activities (Last 7 Days)') ?></p>
+          <p><?= __('Completed Activities <br> (Last 7 Days)') ?></p>
         </div>
         <div class="icon">
           <i class="ion ion-wand"></i>
@@ -46,6 +47,7 @@
           <h3><?= $totalInProgressDeals ?></h3>
 
           <p><?= __('In Progress Deals') ?></p>
+          <br>
         </div>
         <div class="icon">
           <i class="ion ion-briefcase"></i>
@@ -63,6 +65,7 @@
           <h3><?= $totalPendingActivities ?></h3>
 
           <p><?= __('Pending Activities') ?></p>
+          <br>
         </div>
         <div class="icon">
           <i class="ion ion-compose"></i>

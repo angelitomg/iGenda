@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\I18n\I18n; 
 
 /**
  * Application Controller
@@ -41,9 +42,11 @@ class AppController extends Controller
     {
         parent::initialize();
 
+        $lang = $this->_getLang();
+        I18n::locale($lang);
+
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-
 
         $this->loadComponent('Auth', [
             'authenticate' => [
@@ -100,4 +103,20 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
     }
+
+    /**
+     * Get language method
+     */
+    private function _getLang()
+    {
+        $lang = $this->request->session()->read('Config.language');
+        if (!empty($lang)) {
+            return $lang;
+        } else {
+            $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+            if ($lang == 'en') return 'en_US';
+            return 'pt_BR';
+        }
+    }
+
 }

@@ -1,0 +1,1016 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2016-06-08 15:26+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/ActivitiesController.php:97;127
+msgid "The activity has been saved."
+msgstr "Atividade salva com sucesso."
+
+#: Controller/ActivitiesController.php:100;130
+msgid "The activity could not be saved. Please, try again."
+msgstr "Erro ao salvar atividade. Tente novamente mais tarde."
+
+#: Controller/ActivitiesController.php:156
+msgid "The activity has been deleted."
+msgstr "Atividade excluída com sucesso."
+
+#: Controller/ActivitiesController.php:158
+msgid "The activity could not be deleted. Please, try again."
+msgstr "Erro ao excluir atividade. Tente novamente mais tarde."
+
+#: Controller/ActivityTypesController.php:40;68
+msgid "The activity type has been saved."
+msgstr "Tipo de atividade salvo com sucesso."
+
+#: Controller/ActivityTypesController.php:43;71
+msgid "The activity type could not be saved. Please, try again."
+msgstr "Erro ao salvar tipo de atividade. Tente novamente mais tarde."
+
+#: Controller/ActivityTypesController.php:95
+msgid "The activity type has been deleted."
+msgstr "Tipo de atividade excluído com sucesso."
+
+#: Controller/ActivityTypesController.php:97
+msgid "The activity type could not be deleted. Please, try again."
+msgstr "Erro ao excluir tipo de atividade. Tente novamente mais tarde."
+
+#: Controller/AppController.php:87
+msgid "You cannot access this area."
+msgstr "Você não tem permissão para acessar este local."
+
+#: Controller/ClientsController.php:91;119
+msgid "The client has been saved."
+msgstr "Cliente salvo com sucesso."
+
+#: Controller/ClientsController.php:94;122
+msgid "The client could not be saved. Please, try again."
+msgstr "Erro ao salvar cliente. Tente novamente mais tarde."
+
+#: Controller/ClientsController.php:148
+msgid "The client has been deleted."
+msgstr "Cliente excluído com sucesso."
+
+#: Controller/ClientsController.php:150
+msgid "The client could not be deleted. Please, try again."
+msgstr "Erro ao excluir cliente. Tente novamente mais tarde."
+
+#: Controller/CompaniesController.php:33
+msgid "The company has been saved."
+msgstr "Dados da empresa salvos com sucesso."
+
+#: Controller/CompaniesController.php:36
+msgid "The company could not be saved. Please, try again."
+msgstr "Erro ao salvar dados da empresa. Tente novamente mais tarde."
+
+#: Controller/DealsController.php:95;133
+msgid "The deal has been saved."
+msgstr "Negócio salvo com sucesso."
+
+#: Controller/DealsController.php:98;136
+msgid "The deal could not be saved. Please, try again."
+msgstr "Erro ao salvar negócio. Tente novamente mais tarde."
+
+#: Controller/DealsController.php:168
+msgid "The deal has been deleted."
+msgstr "Negócio excluído com sucesso."
+
+#: Controller/DealsController.php:170
+msgid "The deal could not be deleted. Please, try again."
+msgstr "Erro ao excluir negócio, tente novamente mais tarde."
+
+#: Controller/ServicesController.php:40;68
+msgid "The service has been saved."
+msgstr "Serviço salvo com sucesso."
+
+#: Controller/ServicesController.php:43;71
+msgid "The service could not be saved. Please, try again."
+msgstr "Erro ao salvar serviço. Tente novamente mais tarde."
+
+#: Controller/ServicesController.php:94
+msgid "The service has been deleted."
+msgstr "Serviço excluído com sucesso."
+
+#: Controller/ServicesController.php:96
+msgid "The service could not be deleted. Please, try again."
+msgstr "Erro ao excluir serviço. Tente novamente mais tarde."
+
+#: Controller/UsersController.php:62;96
+msgid "The user has been saved."
+msgstr "Usuário salvo com sucesso."
+
+#: Controller/UsersController.php:65;99
+msgid "The user could not be saved. Please, try again."
+msgstr "Erro ao salvar usuário. Tente novamente mais tarde."
+
+#: Controller/UsersController.php:130
+msgid "The user has been deleted."
+msgstr "Usuário excluído com sucesso."
+
+#: Controller/UsersController.php:132
+msgid "The user could not be deleted. Please, try again."
+msgstr "Erro ao excluir usuário. Tente novamente mais tarde."
+
+#: Controller/UsersController.php:162
+msgid "The email already exists in our database. You can recovery your password by entering your email address. "
+msgstr "Este email já esta cadastrado. Você pode recuperar sua senha informando seu email novamente."
+
+#: Controller/UsersController.php:202
+msgid "Confirm your email"
+msgstr "Confirme seu email"
+
+#: Controller/UsersController.php:203;263
+msgid "clicking here"
+msgstr "clicando aqui"
+
+#: Controller/UsersController.php:204
+msgid "Welcome. Your account must be activated."
+msgstr "Bem-vindo. Agora sua conta deve ser ativada."
+
+#: Controller/UsersController.php:205
+msgid "Confirm your account and start using the system now  "
+msgstr "Confirme sua conta e comece a utilizar o sistema agora mesmo "
+
+#: Controller/UsersController.php:220
+msgid "User created successfully. Please check and confirm your email address to start using the system."
+msgstr "Usuário criado com sucesso. Verifique e confirme seu email para começar a utilizar o sistema."
+
+#: Controller/UsersController.php:262
+msgid "Password Recovery"
+msgstr "Recuperar Senha"
+
+#: Controller/UsersController.php:264
+msgid "Your new password is: "
+msgstr "Sua nova senha é: "
+
+#: Controller/UsersController.php:265
+msgid "Sign in "
+msgstr "Entrar"
+
+#: Controller/UsersController.php:276
+msgid "New password generated."
+msgstr "Nova senha gerada."
+
+#: Controller/UsersController.php:280
+msgid "A new password was generated and sent to your email."
+msgstr "Uma nova senha foi gerada e enviada para o seu e-mail."
+
+#: Controller/UsersController.php:284
+msgid "Email not found."
+msgstr "E-mail não encontrado."
+
+#: Controller/UsersController.php:320
+msgid "Account successfully activated."
+msgstr "Conta ativada com sucesso."
+
+#: Controller/UsersController.php:360
+msgid "Invalid username or password."
+msgstr "Usuário ou senha incorretos."
+
+#: Template/Activities/add.ctp:1
+#: Template/Activities/edit.ctp:1
+msgid "Add Activity"
+msgstr "Adicionar Atividade"
+
+#: Template/Activities/add.ctp:23
+#: Template/Activities/edit.ctp:23
+#: Template/Deals/add.ctp:25
+#: Template/Deals/edit.ctp:25
+msgid "Start date"
+msgstr "Data Inicial"
+
+#: Template/Activities/add.ctp:28
+#: Template/Activities/edit.ctp:28
+#: Template/Deals/add.ctp:30
+#: Template/Deals/edit.ctp:30
+msgid "End date"
+msgstr "Data Final"
+
+#: Template/Activities/add.ctp:38
+#: Template/Activities/edit.ctp:38
+#: Template/ActivityTypes/add.ctp:16
+#: Template/ActivityTypes/edit.ctp:16
+#: Template/Clients/add.ctp:50
+#: Template/Clients/edit.ctp:50
+#: Template/Companies/edit.ctp:41
+#: Template/Deals/add.ctp:45
+#: Template/Deals/edit.ctp:45
+#: Template/Permissions/add.ctp:18
+#: Template/Permissions/edit.ctp:24
+#: Template/Services/add.ctp:20
+#: Template/Services/edit.ctp:20
+#: Template/Users/add.ctp:24
+#: Template/Users/edit.ctp:24
+msgid "Submit"
+msgstr "Salvar"
+
+#: Template/Activities/calendar.ctp:3
+#: Template/Layout/adminlte.ctp:303
+msgid "Calendar"
+msgstr "Calendário"
+
+#: Template/Activities/calendar.ctp:4
+msgid "An overview of your activities."
+msgstr "Uma visão geral das suas atividades."
+
+#: Template/Activities/index.ctp:15
+#: Template/Layout/adminlte.ctp:290;328
+msgid "Activities"
+msgstr "Atividades"
+
+#: Template/Activities/index.ctp:16
+msgid "Here you can create and edit your activities."
+msgstr "Aqui você pode criar e editar suas atividades."
+
+#: Template/Activities/index.ctp:23
+msgid "New Activity"
+msgstr "Nova Atividade"
+
+#: Template/Activities/index.ctp:29
+#: Template/ActivityTypes/index.ctp:15
+#: Template/Clients/index.ctp:16
+#: Template/Deals/index.ctp:29
+#: Template/Services/index.ctp:15
+msgid "Hello!"
+msgstr "Olá!"
+
+#: Template/Activities/index.ctp:30
+msgid "You have not registered any activity. Click the New Activity button to add a new activity."
+msgstr "Você ainda nao cadastrou nenhuma atividade. Clique no botão Nova Atividade para adicionar uma nova atividade."
+
+#: Template/Activities/index.ctp:39
+msgid "Activities Search"
+msgstr "Busca de Atividades"
+
+#: Template/Activities/index.ctp:47;52;79
+#: Template/Deals/index.ctp:47;77
+msgid "All"
+msgstr "Todos"
+
+#: Template/Activities/index.ctp:59
+#: Template/Activities/view.ctp:18
+#: Template/Clients/view.ctp:73;112
+#: Template/Deals/index.ctp:57
+#: Template/Deals/view.ctp:25
+msgid "Start Date"
+msgstr "Data Inicial"
+
+#: Template/Activities/index.ctp:69
+#: Template/Activities/view.ctp:21
+#: Template/Clients/view.ctp:74;113
+#: Template/Deals/index.ctp:67
+#: Template/Deals/view.ctp:27
+msgid "End Date"
+msgstr "Data Final"
+
+#: Template/Activities/index.ctp:88
+#: Template/Clients/index.ctp:39
+#: Template/Deals/index.ctp:86
+msgid "Search"
+msgstr "Buscar"
+
+#: Template/Activities/index.ctp:109
+#: Template/ActivityTypes/index.ctp:28
+#: Template/Clients/index.ctp:57
+#: Template/Clients/view.ctp:76;116
+#: Template/Deals/index.ctp:108
+#: Template/Permissions/add.ctp:3
+#: Template/Permissions/edit.ctp:3
+#: Template/Permissions/index.ctp:3;17
+#: Template/Permissions/view.ctp:3;38
+#: Template/Services/index.ctp:29
+#: Template/Users/index.ctp:21
+msgid "Actions"
+msgstr "Opções"
+
+#: Template/Activities/index.ctp:123
+#: Template/Clients/index.ctp:67
+#: Template/Clients/view.ctp:90;131
+#: Template/Dashboard/index.ctp:102;139
+#: Template/Deals/index.ctp:123
+#: Template/Permissions/index.ctp:27
+#: Template/Permissions/view.ctp:48
+msgid "View"
+msgstr "Visualizar"
+
+#: Template/Activities/index.ctp:124
+#: Template/ActivityTypes/index.ctp:35
+#: Template/Clients/index.ctp:68
+#: Template/Clients/view.ctp:91;132
+#: Template/Dashboard/index.ctp:103
+#: Template/Deals/index.ctp:124
+#: Template/Permissions/index.ctp:28
+#: Template/Permissions/view.ctp:49
+#: Template/Services/index.ctp:37
+#: Template/Users/index.ctp:29
+msgid "Edit"
+msgstr "Editar"
+
+#: Template/Activities/index.ctp:125
+#: Template/ActivityTypes/index.ctp:36
+#: Template/Clients/index.ctp:69
+#: Template/Clients/view.ctp:92;133
+#: Template/Deals/index.ctp:125
+#: Template/Element/Deals/deals-form-js.ctp:48
+#: Template/Permissions/edit.ctp:5
+#: Template/Permissions/index.ctp:29
+#: Template/Permissions/view.ctp:50
+#: Template/Services/index.ctp:38
+#: Template/Users/index.ctp:30
+msgid "Delete"
+msgstr "Excluir"
+
+#: Template/Activities/index.ctp:125
+#: Template/ActivityTypes/index.ctp:36
+#: Template/Clients/index.ctp:69
+#: Template/Clients/view.ctp:92;133
+#: Template/Deals/index.ctp:125
+#: Template/Permissions/edit.ctp:7
+#: Template/Permissions/index.ctp:29
+#: Template/Permissions/view.ctp:5;50
+#: Template/Services/index.ctp:38
+#: Template/Users/index.ctp:30
+msgid "Are you sure you want to delete # {0}?"
+msgstr "Tem certeza que deseja excluir o registro #{0}?"
+
+#: Template/Activities/index.ctp:135
+#: Template/ActivityTypes/index.ctp:45
+#: Template/Clients/index.ctp:78
+#: Template/Deals/index.ctp:136
+#: Template/Permissions/index.ctp:37
+#: Template/Services/index.ctp:47
+#: Template/Users/index.ctp:39
+msgid "previous"
+msgstr "anterior"
+
+#: Template/Activities/index.ctp:137
+#: Template/ActivityTypes/index.ctp:47
+#: Template/Clients/index.ctp:80
+#: Template/Deals/index.ctp:138
+#: Template/Permissions/index.ctp:39
+#: Template/Services/index.ctp:49
+#: Template/Users/index.ctp:41
+msgid "next"
+msgstr "próxima"
+
+#: Template/Activities/view.ctp:1
+msgid "Activity"
+msgstr "Atividade"
+
+#: Template/Activities/view.ctp:12
+#: Template/Clients/view.ctp:1
+#: Template/Dashboard/index.ctp:92
+#: Template/Deals/view.ctp:23
+msgid "Client"
+msgstr "Cliente"
+
+#: Template/Activities/view.ctp:15
+#: Template/Clients/view.ctp:72
+msgid "Activity Type"
+msgstr "Tipo de Atividade"
+
+#: Template/Activities/view.ctp:29
+#: Template/Deals/view.ctp:36
+msgid "Description"
+msgstr "Descrição"
+
+#: Template/Activities/view.ctp:38
+#: Template/Clients/view.ctp:75;115
+#: Template/Dashboard/index.ctp:93
+#: Template/Deals/view.ctp:44
+msgid "Status"
+msgstr "Status"
+
+#: Template/Activities/view.ctp:41
+#: Template/Clients/view.ctp:51
+#: Template/Deals/view.ctp:46
+msgid "User"
+msgstr "Usuário"
+
+#: Template/Activities/view.ctp:44
+#: Template/Clients/view.ctp:53
+#: Template/Deals/view.ctp:48
+#: Template/Permissions/view.ctp:36
+msgid "Created"
+msgstr "Criado"
+
+#: Template/Activities/view.ctp:47
+#: Template/Clients/view.ctp:55
+#: Template/Deals/view.ctp:50
+#: Template/Permissions/view.ctp:37
+msgid "Modified"
+msgstr "Modificado"
+
+#: Template/ActivityTypes/add.ctp:1
+msgid "Add Activity Type"
+msgstr "Adicionar Tipo de Atividade"
+
+#: Template/ActivityTypes/edit.ctp:1
+msgid "Edit Activity Type"
+msgstr "Editar Tipo de Atividade"
+
+#: Template/ActivityTypes/index.ctp:1
+#: Template/Layout/adminlte.ctp:297
+msgid "Activity Types"
+msgstr "Tipos de Atividades"
+
+#: Template/ActivityTypes/index.ctp:2
+msgid "Here you can define custom activity types."
+msgstr "Aqui você pode definir tipos de atividades personalizados."
+
+#: Template/ActivityTypes/index.ctp:9
+msgid "New Acivity Type"
+msgstr "Novo Tipo de Atividade"
+
+#: Template/ActivityTypes/index.ctp:16
+msgid "You have not registered any activity type. Click the New Activity Type button to add a new activity type."
+msgstr "Você ainda não cadastrou nenhum tipo de atividade. Clique em Novo Tipo de Atividade para adicionar um novo tipo de atividade."
+
+#: Template/Clients/add.ctp:1
+msgid "Add Client"
+msgstr "Adicionar Cliente"
+
+#: Template/Clients/add.ctp:14
+#: Template/Clients/edit.ctp:14
+#: Template/Clients/view.ctp:26
+#: Template/Dashboard/index.ctp:127
+msgid "Birthdate"
+msgstr "Data de Nascimento"
+
+#: Template/Clients/edit.ctp:1
+msgid "Edit Client"
+msgstr "Editar Cliente"
+
+#: Template/Clients/index.ctp:1
+#: Template/Dashboard/index.ctp:14
+#: Template/Layout/adminlte.ctp:309
+#: Template/Pages/home.ctp:61
+msgid "Clients"
+msgstr "Clientes"
+
+#: Template/Clients/index.ctp:2
+msgid "All your clients can be managed in this section."
+msgstr "Todos os seus clientes podem ser gerenciados através desta seção."
+
+#: Template/Clients/index.ctp:10
+msgid "New Client"
+msgstr "Novo Cliente"
+
+#: Template/Clients/index.ctp:17
+msgid "You have not registered any client. Click the New Client button to add a new client."
+msgstr "Você ainda não cadastrou nenhum cliente. Clique no botão Novo Cliente para adicionar um novo cliente."
+
+#: Template/Clients/index.ctp:27
+msgid "Search Clients"
+msgstr "Busca de Clientes"
+
+#: Template/Clients/index.ctp:33
+#: Template/Clients/view.ctp:20;111
+#: Template/Dashboard/index.ctp:126
+#: Template/Deals/view.ctp:21;66
+#: Template/Permissions/view.ctp:16
+msgid "Name"
+msgstr "Nome"
+
+#: Template/Clients/view.ctp:11;71;110
+#: Template/Dashboard/index.ctp:125
+#: Template/Deals/view.ctp:11
+#: Template/Permissions/view.ctp:24;33
+msgid "Id"
+msgstr "Id"
+
+#: Template/Clients/view.ctp:22
+msgid "Document1"
+msgstr "CPF/CPNJ"
+
+#: Template/Clients/view.ctp:24
+msgid "Document2"
+msgstr "RG/IE"
+
+#: Template/Clients/view.ctp:35
+msgid "Address"
+msgstr "Endereço"
+
+#: Template/Clients/view.ctp:37
+msgid "Phone"
+msgstr "Telefone"
+
+#: Template/Clients/view.ctp:39
+#: Template/Users/login.ctp:43
+#: Template/Users/recovery_password.ctp:42
+#: Template/Users/register.ctp:46
+msgid "Email"
+msgstr "E-mail"
+
+#: Template/Clients/view.ctp:41
+msgid "Site"
+msgstr "Site"
+
+#: Template/Clients/view.ctp:49
+msgid "Contact Name"
+msgstr "Contato"
+
+#: Template/Clients/view.ctp:67
+msgid "Next Activities"
+msgstr "Próximas Atividades"
+
+#: Template/Clients/view.ctp:106
+msgid "Current Deals"
+msgstr "Negócios em Andamento"
+
+#: Template/Clients/view.ctp:114
+msgid "Amount"
+msgstr "Total"
+
+#: Template/Companies/edit.ctp:1
+msgid "Edit Company Info"
+msgstr "Editar Informações da Empresa"
+
+#: Template/Dashboard/index.ctp:2
+msgid "Dashboard"
+msgstr "Painel"
+
+#: Template/Dashboard/index.ctp:3
+msgid "What is happening..."
+msgstr "O que anda acontecendo...."
+
+#: Template/Dashboard/index.ctp:20;37;54;71
+msgid "More info"
+msgstr "Mais informações"
+
+#: Template/Dashboard/index.ctp:31
+msgid "Completed Activities <br> (Last 7 Days)"
+msgstr "Atividades Concluídas <br> (Últimos 7 Dias)"
+
+#: Template/Dashboard/index.ctp:48
+msgid "In Progress Deals"
+msgstr "Negócios em Andamento"
+
+#: Template/Dashboard/index.ctp:65
+msgid "Pending Activities"
+msgstr "Atividades Pendentes"
+
+#: Template/Dashboard/index.ctp:82
+msgid "Today Activities"
+msgstr "Atividades de Hoje"
+
+#: Template/Dashboard/index.ctp:87
+msgid "No activities for today."
+msgstr "Sem atividades para hoje."
+
+#: Template/Dashboard/index.ctp:91
+msgid "Type"
+msgstr "Tipo"
+
+#: Template/Dashboard/index.ctp:118
+msgid "Upcoming Birthdays"
+msgstr "Próximos Aniversários"
+
+#: Template/Dashboard/index.ctp:144
+msgid "No birthdays in the coming days."
+msgstr "Sem aniversariantes nos próximos dias."
+
+#: Template/Deals/add.ctp:1
+msgid "Add Deal"
+msgstr "Adicionar Negócio"
+
+#: Template/Deals/add.ctp:39
+#: Template/Deals/edit.ctp:39
+#: Template/Deals/view.ctp:69;89
+#: Template/Element/Deals/services-list.ctp:21
+msgid "Total"
+msgstr "Total"
+
+#: Template/Deals/edit.ctp:1
+msgid "Edit Deal"
+msgstr "Editar Negócio"
+
+#: Template/Deals/index.ctp:15
+#: Template/Layout/adminlte.ctp:321;329
+msgid "Deals"
+msgstr "Negócios"
+
+#: Template/Deals/index.ctp:16
+msgid "Here you can manage your deals."
+msgstr "Aqui você pode gerenciar suas negociações."
+
+#: Template/Deals/index.ctp:23
+msgid "New Deal"
+msgstr "Novo Negócio"
+
+#: Template/Deals/index.ctp:30
+msgid "You have not registered any deal. Click the New Deal button to add a new deal."
+msgstr "Você ainda não registrou qualquer negócio. Clique no botão Novo Negócio para adicionar um novo negócio."
+
+#: Template/Deals/index.ctp:39
+msgid "Deals Search"
+msgstr "Busca de Negócios"
+
+#: Template/Deals/view.ctp:1
+msgid "Deal"
+msgstr "Negócio"
+
+#: Template/Deals/view.ctp:62
+msgid "Related Services"
+msgstr "Serviços Relacionados"
+
+#: Template/Deals/view.ctp:67
+#: Template/Element/Deals/services-list.ctp:15
+msgid "Quantity"
+msgstr "Quantidade"
+
+#: Template/Deals/view.ctp:68
+#: Template/Element/Deals/services-list.ctp:18
+msgid "Price"
+msgstr "Preço"
+
+#: Template/Element/Deals/deals-form-js.ctp:24
+msgid "Select..."
+msgstr "Selecione..."
+
+#: Template/Element/Deals/services-list.ctp:6
+#: Template/Layout/adminlte.ctp:335
+#: Template/Services/index.ctp:1
+msgid "Services"
+msgstr "Serviços"
+
+#: Template/Element/Deals/services-list.ctp:12
+msgid "Service"
+msgstr "Serviço"
+
+#: Template/Element/Deals/services-list.ctp:30
+#: Template/Services/add.ctp:1
+msgid "Add Service"
+msgstr "Adicionar Serviço"
+
+#: Template/Element/Flash/error.ctp:3
+msgid "Error!"
+msgstr "Erro!"
+
+#: Template/Element/Flash/success.ctp:3
+msgid "Ok!"
+msgstr "Ok!"
+
+#: Template/Layout/adminlte.ctp:89
+#: Template/Pages/home.ctp:48
+msgid "Toggle navigation"
+msgstr "Esconder navegação"
+
+#: Template/Layout/adminlte.ctp:285
+#: Template/Pages/home.ctp:58
+msgid "Home"
+msgstr "Início"
+
+#: Template/Layout/adminlte.ctp:315
+msgid "Company Info"
+msgstr "Informações da Empresa"
+
+#: Template/Layout/adminlte.ctp:326
+msgid "Reports"
+msgstr "Relatórios"
+
+#: Template/Layout/adminlte.ctp:341
+#: Template/Users/index.ctp:1
+msgid "Users"
+msgstr "Usuários"
+
+#: Template/Layout/adminlte.ctp:347
+msgid "Logout"
+msgstr "Sair"
+
+#: Template/Pages/home.ctp:7
+msgid "The Simplest and Easy CRM in the World"
+msgstr "O CRM Mais Simples e Fácil de Usar"
+
+#: Template/Pages/home.ctp:59;115
+msgid "Features"
+msgstr "Vantagens"
+
+#: Template/Pages/home.ctp:60;155
+msgid "Screenshots"
+msgstr "Telas"
+
+#: Template/Pages/home.ctp:62
+msgid "About"
+msgstr "Sobre"
+
+#: Template/Pages/home.ctp:63
+msgid "Contact"
+msgstr "Contato"
+
+#: Template/Pages/home.ctp:90
+msgid "The simplest way to manage clients, activities and deals."
+msgstr "A maneira mais simples de gerenciar clientes, atividades e negócios."
+
+#: Template/Pages/home.ctp:95
+msgid "The iGenda is a CRM who came to make your life easier. It does not have features that you do not use and is super fast and easy. Register now for free or see some screenshots to see how iGenda can really change the way you work."
+msgstr "O iGenda é um CRM que veio para tornar sua vida mais fácil. Ele não tem funções que você não usa e é super fácil e rápido. Cadastre-se agora mesmo gratuitamente ou veja algumas telas e sinta como o iGenda pode realmente melhorar o jeito como você trabalha."
+
+#: Template/Pages/home.ctp:96
+msgid "Some Screenshots"
+msgstr "Algumas Telas"
+
+#: Template/Pages/home.ctp:97
+msgid "Sign Up Now"
+msgstr "Cadastre-se Agora"
+
+#: Template/Pages/home.ctp:116
+msgid "Why choose US?"
+msgstr "Por que escolher o iGenda?"
+
+#: Template/Pages/home.ctp:121
+msgid "Easy to Use"
+msgstr "Fácil de Usar"
+
+#: Template/Pages/home.ctp:122
+msgid "Only the features that you really need."
+msgstr "Apenas os recursos que você realmente precisa."
+
+#: Template/Pages/home.ctp:130
+msgid "Anywhere, Anytime"
+msgstr "Qualquer Hora, Qualquer Lugar"
+
+#: Template/Pages/home.ctp:131
+msgid "iGenda lives in the cloud, so this is available 24/7."
+msgstr "O iGenda mora na nuvem, assim, está disponível 24 horas por dia, 7 dias por semana."
+
+#: Template/Pages/home.ctp:138
+msgid "Free Trial"
+msgstr "Experimente Grátis"
+
+#: Template/Pages/home.ctp:139
+msgid "Test iGenda for free and see if it meets your expectations."
+msgstr "Experimente o iGenda gratuitamente e veja se ele realmente atende as suas expectativas."
+
+#: Template/Pages/home.ctp:156
+msgid "See how easy it is to do anything"
+msgstr "Veja como é facil fazer qualquer coisa"
+
+#: Template/Pages/home.ctp:268
+msgid ""
+msgstr ""
+
+#: Template/Pages/home.ctp:271
+msgid "iGenda is a CRM that aims to facilitate management of clients, activities, deals and much more.  Through a simple and intuitive interface, the user has full control over everything that is happening.\n"
+msgstr "O iGenda é um CRM que visa facilitar a gestão de clientes, atividades, negócios e muito mais. Através de uma interface simples e intuitiva, o usuário tem controle total sobre tudo o que está acontecendo.\n"
+
+#: Template/Pages/home.ctp:273
+msgid "Moreover, thanks to its responsive design you can access the iGenda anytime, anywhere and on any device, causing the iGenda stay with you throughout your day."
+msgstr "Além disso, graças ao seu design responsivo, você pode acessar o iGenda a qualquer hora, em qualquer lugar e em qualquer dispositivo, fazendo com que o iGenda fique com você durante todo o dia."
+
+#: Template/Pages/home.ctp:274
+msgid "With your multiuser support, you can create multiple users and set custom permissions to each user, thus ensuring greater security and control."
+msgstr "Com o seu suporte multi usuário, você pode criar vários usuários e definir permissões personalizadas para cada usuário, garantindo assim maior segurança e controle."
+
+#: Template/Pages/home.ctp:290
+msgid "Contact us"
+msgstr "Entre em Contato"
+
+#: Template/Pages/home.ctp:292
+msgid "Any question? Send us a message"
+msgstr "Alguma dúvida? Envie-nos uma mensagem"
+
+#: Template/Pages/home.ctp:319
+msgid "Send"
+msgstr "Enviar"
+
+#: Template/Pages/home.ctp:339
+msgid "If you are in any doubt or difficulty regarding iGenda, send us a message. We will contact you as soon as possible."
+msgstr "Se você está com alguma dúvida ou dificuldade em relação ao iGenda, nos envie uma mensagem. Nós entraremos em contato o mais rápido possível."
+
+#: Template/Pages/home.ctp:353
+msgid "All right reserved."
+msgstr "Todos os direitos reservados."
+
+#: Template/Pages/home.ctp:353
+msgid "Developed by <a target=\"_blank\" href=\"http://amglabs.net/en\">AMG Labs</a>"
+msgstr "Desenvolvido por <a target=\"_blank\" href=\"http://amglabs.net/\">AMG Labs</a>"
+
+#: Template/Services/add.ctp:15
+#: Template/Services/edit.ctp:15
+#: Template/Services/index.ctp:28
+msgid "Default price"
+msgstr "Preço padrão"
+
+#: Template/Services/edit.ctp:1
+msgid "Edit Service"
+msgstr "Editar Serviço"
+
+#: Template/Services/index.ctp:2
+msgid "Here you can manage the services available."
+msgstr "Aqui você pode gerenciar os serviços disponíveis."
+
+#: Template/Services/index.ctp:9
+msgid "New Service"
+msgstr "Novo Serviço"
+
+#: Template/Services/index.ctp:16
+msgid "You have not registered any service. Click the New Service button to add a new service."
+msgstr "Você ainda não cadastrou serviços. Clique em Novo Serviço para adicionar um novo serviço."
+
+#: Template/Users/add.ctp:1
+msgid "Add User"
+msgstr "Adicionar Usuário"
+
+#: Template/Users/edit.ctp:1
+msgid "Edit User"
+msgstr "Editar Usuário"
+
+#: Template/Users/index.ctp:2
+msgid "Here you can manage the system users."
+msgstr "Aqui você pode gerenciar os usuários do sistema."
+
+#: Template/Users/index.ctp:9
+msgid "New User"
+msgstr "Novo Usuário"
+
+#: Template/Users/login.ctp:7
+msgid "Log in"
+msgstr "Entrar"
+
+#: Template/Users/login.ctp:36
+msgid "Sign in to start your session"
+msgstr "Entre para iniciar sua sessão"
+
+#: Template/Users/login.ctp:47
+#: Template/Users/register.ctp:50
+msgid "Password"
+msgstr "Senha"
+
+#: Template/Users/login.ctp:52
+msgid "I forgot my password"
+msgstr "Esqueci minha senha"
+
+#: Template/Users/login.ctp:53
+#: Template/Users/register.ctp:7;35
+msgid "Register a new membership"
+msgstr "Cadastre-se"
+
+#: Template/Users/login.ctp:57
+msgid "Sign in"
+msgstr "Entrar"
+
+#: Template/Users/recovery_password.ctp:7;61
+msgid "Recovery Password"
+msgstr "Recuperar Senha"
+
+#: Template/Users/recovery_password.ctp:35
+msgid "Recovery password"
+msgstr "Recuperar senha"
+
+#: Template/Users/recovery_password.ctp:70
+msgid "Back to login"
+msgstr "Voltar ao login"
+
+#: Template/Users/register.ctp:42
+msgid "Company Name"
+msgstr "Nome da Empresa"
+
+#: Template/Users/register.ctp:69
+msgid "Register Now"
+msgstr "Cadastre-se Agora"
+
+#: Template/Users/register.ctp:78
+msgid "Have an account? Login now!"
+msgstr "Tem uma conta? Entre agora!"
+
+#: Template/Error/error400.ctp:36
+#: Template/Error/error500.ctp:41
+msgid "Error"
+msgstr "Erro"
+
+#: Template/Error/error400.ctp:38
+msgid "The requested address %s was not found on this server."
+msgstr "O endereço %s não foi encontrado."
+
+#: Template/Error/error500.ctp:39
+msgid "An Internal Error Has Occurred"
+msgstr "Erro interno."
+
+msgid "Canceled"
+msgstr "Cancelado"
+
+msgid "Pending"
+msgstr "Pendente"
+
+msgid "In Progress"
+msgstr "Em Andamento"
+
+msgid "Complete"
+msgstr "Concluído"
+
+msgid "Add Users"
+msgstr "Adicionar Usuários"
+
+msgid "Edit Users"
+msgstr "Editar Usuários"
+
+msgid "List Users"
+msgstr "Listar Usuários"
+
+msgid "Delete Users"
+msgstr "Excluir Usuários"
+
+msgid "Add Activities"
+msgstr "Adicionar Atividades"
+
+msgid "Edit Activities"
+msgstr "Editar Atividades"
+
+msgid "List Activities"
+msgstr "Listar Atividades"
+
+msgid "View Activities"
+msgstr "Visualizar Atividades"
+
+msgid "Delete Activities"
+msgstr "Excluir Atividades"
+
+msgid "Add Clients"
+msgstr "Adicionar Clientes"
+
+msgid "Edit Clients"
+msgstr "Editar Clientes"
+
+msgid "List Clients"
+msgstr "Listar Clientes"
+
+msgid "View Clients"
+msgstr "Visualizar Clientes"
+
+msgid "Delete Clients"
+msgstr "Excluir Clientes"
+
+msgid "Add Services"
+msgstr "Adicionar Serviços"
+
+msgid "Edit Services"
+msgstr "Editar Serviços"
+
+msgid "List Services"
+msgstr "Listar Serviços"
+
+msgid "Delete Services"
+msgstr "Excluir Serviços"
+
+msgid "Add Activity Types"
+msgstr "Adicionar Tipos de Atividades"
+
+msgid "Edit Activity Types"
+msgstr "Editar Tipos de Atividades"
+
+msgid "List Activity Types"
+msgstr "Listar Tipos de Atividades"
+
+msgid "Delete Activity Types"
+msgstr "Excluir Tipos de Atividades"
+
+msgid "Edit Company Info"
+msgstr "Editar Informações da Empresa"
+
+msgid "Add Deals"
+msgstr "Adicionar Negócios"
+
+msgid "Edit Deals"
+msgstr "Editar Negócios"
+
+msgid "List Deals"
+msgstr "Listar Negócios"
+
+msgid "View Deals"
+msgstr "Visualizar Negócios"
+
+msgid "Delete Deals"
+msgstr "Excluir Negócios"
+
+msgid "View Activities Calendar"
+msgstr "Visualizar Calendário de Atividades"
+
+msgid "screen1-en.png"
+msgstr "screen1-br.png"
+
+msgid "screen2-en.png"
+msgstr "screen2-br.png"
+
+msgid "screen3-en.png"
+msgstr "screen3-br.png"
+
+msgid "home-en.png"
+msgid "home-br.png"
+
+msgid "Subject"
+msgstr "Assunto"
+
+msgid "Message"
+msgstr "Mensagem"

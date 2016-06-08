@@ -72,4 +72,17 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+
+    /**
+     * Change language method
+     *
+     */
+    public function changeLanguage($lang = 'pt_BR')
+    {
+        if ($lang == 'br') $lang = 'pt_BR';
+        if ($lang == 'en') $lang = 'en_US';
+        $this->request->session()->write('Config.language', $lang);
+        $this->redirect('/');
+    }
+
 }

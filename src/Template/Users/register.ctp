@@ -73,9 +73,9 @@
       </div>
     <?= $this->Form->end() ?>
 
-    <p> 
+    <p class="text-center"> 
       <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'login']) ?>">
-        <?php __('I already have a membership'); ?>
+        <?= __('Have an account? Login now!') ?>
       </a>
     </p>
 

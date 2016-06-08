@@ -37,7 +37,9 @@ a:hover {
   color: #fff;
 }
 .btn-common:hover {
-  background: #e74c3c;
+  /*background: #e74c3c;*/
+  background-color: #3071a9;
+  border-color: #285e8e;
   color: #fff;
 }
 
@@ -75,7 +77,9 @@ a:hover {
 }
 .navbar-default .navbar-nav > .active,
 .navbar-default .navbar-nav li:hover {
-  background: #e74c3c;
+  /*background: #e74c3c;*/
+  background-color: #3071a9;
+  border-color: #285e8e;
   padding-bottom: 5px;
   color: #fff;
 }
@@ -110,24 +114,24 @@ a:hover {
 #hero-area p {
   padding: 50px 0;
 }
-#services h3 {
+#features h3 {
   margin-top: 0;
   font-size: 28px;
   color: #e74c3c;
 }
 /*Portfolio*/
-#portfolio {
+#screenshots {
   background: #f1f1f1;
 }
 /*Portfolio Overlay */
-.portfolio-item {
+.screenshots-item {
   position: relative;
   margin-bottom: 15px;
 }
-.portfolio-item img {
+.screenshots-item img {
   width: 100%;
 }
-.portfolio-item .overlay {
+.screenshots-item .overlay {
   position: absolute;
   top: 0;
   width: 100%;
@@ -136,7 +140,7 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.8);
   display: none;
 }
-.portfolio-item:hover .overlay {
+.screenshots-item:hover .overlay {
   position: absolute;
   top: 0;
   width: 100%;
@@ -145,7 +149,7 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.8);
   display: block;
 }
-.portfolio-item .icons .preview {
+.screenshots-item .icons .preview {
   position: absolute;
   left: 40%;
   top: 40%;
@@ -157,8 +161,9 @@ a:hover {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-.portfolio-item .icons .preview i {
-  color: #e74c3c;
+.screenshots-item .icons .preview i {
+  /*color: #e74c3c;*/
+  color: #3071a9;
 }
 #clients {
   background: #fff;

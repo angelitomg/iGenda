@@ -145,7 +145,7 @@ class UsersController extends AppController
         $this->viewBuilder()->layout(false);
 
         // Allow only if user not logged
-        if ($this->Auth->user()) $this->redirect('/');
+        if ($this->Auth->user()) $this->redirect(['controller' => 'Dashboard', 'action' => 'index']);
 
         if ($this->request->is('post')) {
 
@@ -235,7 +235,7 @@ class UsersController extends AppController
         $this->viewBuilder()->layout(false);
 
         // Allow only if user not logged
-        if ($this->Auth->user()) $this->redirect('/');
+        if ($this->Auth->user()) $this->redirect(['controller' => 'Dashboard', 'action' => 'index']);
 
         if ($this->request->is('post')) {
 
@@ -261,7 +261,7 @@ class UsersController extends AppController
                 $url = Router::url(['controller' => 'Users', 'action' => 'login'], true );
                 $emailTitle = Configure::read('System.title') . ' - ' . __('Password Recovery');
                 $loginLink = '<a href="' . $url . '" target="_blank">' . __('clicking here') . '</a>';
-                $emailContent = '<p>' . __('Your new password is: ' . '<strong>' .  $password . '</strong>') . '</p>';
+                $emailContent = '<p>' . __('Your new password is: ') . '<strong>' .  $password . '</strong>' . '</p>';
                 $emailContent .= '<p>' . __('Sign in ') . $loginLink . '</p>';
 
                 // Send email
@@ -299,7 +299,7 @@ class UsersController extends AppController
         $this->viewBuilder()->template(false);
 
         // Allow only if user not logged
-        if ($this->Auth->user()) $this->redirect('/');
+        if ($this->Auth->user()) $this->redirect(['controller' => 'Dashboard', 'action' => 'index']);
 
         // Get token
         $token = $this->request->params['pass'][0];
@@ -337,7 +337,7 @@ class UsersController extends AppController
         $this->viewBuilder()->layout(false);
 
         // Allow only if user not logged
-        if ($this->Auth->user()) $this->redirect('/');
+        if ($this->Auth->user()) $this->redirect(['controller' => 'Dashboard', 'action' => 'index']);
 
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();

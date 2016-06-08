@@ -49,7 +49,12 @@ Router::scope('/', function (RouteBuilder $routes) {
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
     //$routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-    $routes->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
+    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+
+    /**
+     * Change language method
+     */
+    $routes->connect('/pages/change-language/*', ['controller' => 'Pages', 'action' => 'changeLanguage']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
