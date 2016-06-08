@@ -53,7 +53,8 @@ class AppController extends Controller
                 'Form' => [
                     'fields' => ['username' => 'email', 'password' => 'password']
                 ]
-            ]
+            ],
+            'loginRedirect' => ['controller' => 'Dashboard', 'action' => 'index']
         ]);
         $this->Auth->config('authorize', ['Controller']);
 

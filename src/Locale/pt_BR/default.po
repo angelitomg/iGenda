@@ -723,7 +723,7 @@ msgstr "Algumas Telas"
 
 #: Template/Pages/home.ctp:97
 msgid "Sign Up Now"
-msgstr "Cadastre-se Agora"
+msgstr "Acesse Agora"
 
 #: Template/Pages/home.ctp:116
 msgid "Why choose US?"
