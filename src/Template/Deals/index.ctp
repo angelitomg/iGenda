@@ -2,13 +2,13 @@
 
     $params = $this->request->query;
     $values['client_id'] = (isset($params['client_id'])) ? $params['client_id'] : '';
-    $values['status'] = (isset($params['client_id'])) ? $params['client_id'] : '';
+    $values['status'] = (isset($params['status'])) ? $params['status'] : '';
     $values['name'] = (isset($params['name'])) ? $params['name'] : '';
 
-    $values['start_date1'] = (isset($this->request->query['start_date1'])) ? $this->request->query['start_date1'] : '';
-    $values['start_date2'] = (isset($this->request->query['start_date2'])) ? $this->request->query['start_date2'] : '';
-    $values['end_date1'] = (isset($this->request->query['end_date1'])) ? $this->request->query['end_date1'] : '';
-    $values['end_date2'] = (isset($this->request->query['end_date2'])) ? $this->request->query['end_date2'] : '';
+    $values['start_date1'] = (isset($params['start_date1'])) ? $params['start_date1'] : '';
+    $values['start_date2'] = (isset($params['start_date2'])) ? $params['start_date2'] : '';
+    $values['end_date1'] = (isset($params['end_date1'])) ? $params['end_date1'] : '';
+    $values['end_date2'] = (isset($params['end_date2'])) ? $params['end_date2'] : '';
 
 ?>
 

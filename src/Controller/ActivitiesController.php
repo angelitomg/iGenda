@@ -55,8 +55,11 @@ class ActivitiesController extends AppController
         // Check if is report
         $activities = ($report == null) ? $this->paginate($query) : $query;
 
-        $clients = $this->Activities->Clients->find('list');
-        $activityTypes = $this->Activities->ActivityTypes->find('list');
+        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()]];
+        $clients = $this->Activities->Clients->find('list', $clientsWhere);
+
+        $activityTypesWhere = ['conditions' => ['ActivityTypes.company_id' => get_company_id()]];
+        $activityTypes = $this->Activities->ActivityTypes->find('list', $activityTypesWhere);
         $statusList = $activity->getStatusList();
 
         $this->set(compact('activities', 'activityTypes', 'clients', 'statusList', 'report', 'total'));
@@ -100,8 +103,13 @@ class ActivitiesController extends AppController
                 $this->Flash->error(__('The activity could not be saved. Please, try again.'));
             }
         }
-        $clients = $this->Activities->Clients->find('list');
-        $activityTypes = $this->Activities->ActivityTypes->find('list');
+
+        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()]];
+        $clients = $this->Activities->Clients->find('list', $clientsWhere);
+
+        $activityTypesWhere = ['conditions' => ['ActivityTypes.company_id' => get_company_id()]];
+        $activityTypes = $this->Activities->ActivityTypes->find('list', $activityTypesWhere);
+
         $this->set(compact('activity', 'clients', 'activityTypes'));
         $this->set('_serialize', ['activity']);
     }
@@ -130,8 +138,13 @@ class ActivitiesController extends AppController
                 $this->Flash->error(__('The activity could not be saved. Please, try again.'));
             }
         }
-        $clients = $this->Activities->Clients->find('list');
-        $activityTypes = $this->Activities->ActivityTypes->find('list');
+        
+        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()]];
+        $clients = $this->Activities->Clients->find('list', $clientsWhere);
+
+        $activityTypesWhere = ['conditions' => ['ActivityTypes.company_id' => get_company_id()]];
+        $activityTypes = $this->Activities->ActivityTypes->find('list', $activityTypesWhere);
+
         $this->set(compact('activity', 'clients', 'activityTypes'));
         $this->set('_serialize', ['activity']);
     }

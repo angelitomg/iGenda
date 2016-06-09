@@ -25,7 +25,7 @@ use Cake\ORM\Entity;
 class Activity extends Entity
 {
 
-    const ACTIVITY_STATUS_CANCELED = 0;
+    const ACTIVITY_STATUS_CANCELED = 5;
     const ACTIVITY_STATUS_PENDING = 10;
     const ACTIVITY_STATUS_IN_PROGRESS = 20;
     const ACTIVITY_STATUS_WAITING = 30;
@@ -49,7 +49,8 @@ class Activity extends Entity
 
     public function getStatus($status){
         $statusName = (isset($this->statusList[$status])) ? __($this->statusList[$status]) : '';
-        if ($status == 0) $css_class = 'text-red';
+        $css_class = '';
+        if ($status == 5) $css_class = 'text-red';
         if ($status == 10) $css_class = 'text-yellow';
         if ($status == 20) $css_class = 'text-light-blue';
         if ($status == 30) $css_class = 'text-red';
@@ -58,7 +59,7 @@ class Activity extends Entity
     }
 
     public function getActivityColor($status) {
-        if ($status == 0) return '#dd4b39';
+        if ($status == 5) return '#dd4b39';
         if ($status == 10) return '#f39c12';
         if ($status == 20) return '#3c8dbc';
         if ($status == 30) return '#dd4b39';

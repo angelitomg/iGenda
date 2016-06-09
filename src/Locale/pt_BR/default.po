@@ -907,6 +907,9 @@ msgstr "Pendente"
 msgid "In Progress"
 msgstr "Em Andamento"
 
+msgid "Waiting"
+msgstr "Aguardando"
+
 msgid "Complete"
 msgstr "Concluído"
 
