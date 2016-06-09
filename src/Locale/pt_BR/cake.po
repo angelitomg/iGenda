@@ -1,0 +1,44 @@
+msgid "Error"
+msgstr "Erro"
+
+msgid "The requested address %s was not found on this server."
+msgstr "O endereço %s não foi encontrado neste servidor."
+
+msgid "An Internal Error Has Occurred"
+msgstr "Ocorreu um erro interno."
+
+msgid "January"
+msgstr "Janeiro"
+
+msgid "February"
+msgstr "Fevereiro"
+
+msgid "March"
+msgstr "Março"
+
+msgid "April"
+msgstr "Abril"
+
+msgid "May"
+msgstr "Maio"
+
+msgid "June"
+msgstr "Junho"
+
+msgid "July"
+msgstr "Julho"
+
+msgid "August"
+msgstr "Agosto"
+
+msgid "September"
+msgstr "Setembro"
+
+msgid "October"
+msgstr "Outubro"
+
+msgid "November"
+msgstr "Novembro"
+
+msgid "December"
+msgstr "Dezembro"
