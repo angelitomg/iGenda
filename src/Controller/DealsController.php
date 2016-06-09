@@ -54,7 +54,8 @@ class DealsController extends AppController
         // Check if is report
         $deals = ($report == null) ? $this->paginate($query) : $query;
 
-        $clients = $this->Deals->Clients->find('list');
+        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()]];
+        $clients = $this->Deals->Clients->find('list', $clientsWhere);
         $statusList = $deal->getStatusList();
 
         $this->set(compact('deals', 'clients', 'statusList', 'report', 'total'));
@@ -98,11 +99,14 @@ class DealsController extends AppController
                 $this->Flash->error(__('The deal could not be saved. Please, try again.'));
             }
         }
-        $clients = $this->Deals->Clients->find('list');
+
+        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()]];
+        $clients = $this->Deals->Clients->find('list', $clientsWhere);
 
         $this->loadModel('Services');
-        $services = $this->Services->find('list');
-        $servicesData = $this->Services->find('all');
+        $servicesWhere = ['conditions' => ['Services.company_id' => get_company_id()]];
+        $services = $this->Services->find('list', $servicesWhere);
+        $servicesData = $this->Services->find('all', $servicesWhere);
 
         $this->set(compact('deal', 'clients', 'services', 'servicesData'));
         $this->set('_serialize', ['deal']);
@@ -137,11 +141,13 @@ class DealsController extends AppController
             }
         }
 
-        $clients = $this->Deals->Clients->find('list');
+        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()]];
+        $clients = $this->Deals->Clients->find('list', $clientsWhere);
 
         $this->loadModel('Services');
-        $services = $this->Services->find('list');
-        $servicesData = $this->Services->find('all');
+        $servicesWhere = ['conditions' => ['Services.company_id' => get_company_id()]];
+        $services = $this->Services->find('list', $servicesWhere);
+        $servicesData = $this->Services->find('all', $servicesWhere);
 
         $this->set(compact('deal', 'clients', 'servicesData', 'services'));
         $this->set('_serialize', ['deal']);
