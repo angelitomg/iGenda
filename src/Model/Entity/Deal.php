@@ -34,11 +34,11 @@ class Deal extends Entity
     const DEAL_STATUS_COMPLETE = 40;
 
     protected $statusList = [
-        self::DEAL_STATUS_CANCELED => 'Canceled',
         self::DEAL_STATUS_PENDING => 'Pending', 
         self::DEAL_STATUS_IN_PROGRESS => 'In Progress',
         self::DEAL_STATUS_WAITING => 'Waiting',
-        self::DEAL_STATUS_COMPLETE => 'Complete'
+        self::DEAL_STATUS_COMPLETE => 'Complete',
+        self::DEAL_STATUS_CANCELED => 'Canceled',
     ];
 
     public function getStatusList(){

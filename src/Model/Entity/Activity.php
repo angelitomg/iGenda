@@ -32,11 +32,11 @@ class Activity extends Entity
     const ACTIVITY_STATUS_COMPLETE = 40;
 
     protected $statusList = [
-        self::ACTIVITY_STATUS_CANCELED => 'Canceled', 
         self::ACTIVITY_STATUS_PENDING => 'Pending', 
         self::ACTIVITY_STATUS_IN_PROGRESS => 'In Progress',
         self::ACTIVITY_STATUS_WAITING => 'Waiting',
-        self::ACTIVITY_STATUS_COMPLETE => 'Complete'
+        self::ACTIVITY_STATUS_COMPLETE => 'Complete',
+        self::ACTIVITY_STATUS_CANCELED => 'Canceled'
     ];
 
     public function getStatusList(){
