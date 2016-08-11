@@ -122,4 +122,9 @@ class DealsTable extends Table
 
     }
 
+    public function findAll(Query $query, array $options)
+    {
+        return $query->order(['Deals.start_date' => 'DESC']);
+    }
+
 }

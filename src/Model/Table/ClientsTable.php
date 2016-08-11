@@ -97,4 +97,9 @@ class ClientsTable extends Table
 
     }
 
+    public function findAll(Query $query, array $options)
+    {
+        return $query->order(['Clients.name' => 'ASC']);
+    }
+
 }

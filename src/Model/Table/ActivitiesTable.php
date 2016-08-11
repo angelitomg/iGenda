@@ -116,4 +116,9 @@ class ActivitiesTable extends Table
 
     }
 
+    public function findAll(Query $query, array $options)
+    {
+        return $query->order(['Activities.start_date' => 'DESC']);
+    }
+
 }

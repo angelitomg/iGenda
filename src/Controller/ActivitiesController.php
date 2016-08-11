@@ -55,10 +55,10 @@ class ActivitiesController extends AppController
         // Check if is report
         $activities = ($report == null) ? $this->paginate($query) : $query;
 
-        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()]];
+        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()], 'order' => ['Clients.name' => 'ASC']];
         $clients = $this->Activities->Clients->find('list', $clientsWhere);
 
-        $activityTypesWhere = ['conditions' => ['ActivityTypes.company_id' => get_company_id()]];
+        $activityTypesWhere = ['conditions' => ['ActivityTypes.company_id' => get_company_id()], 'order' => ['ActivityTypes.name' => 'ASC']];
         $activityTypes = $this->Activities->ActivityTypes->find('list', $activityTypesWhere);
         $statusList = $activity->getStatusList();
 
@@ -104,10 +104,10 @@ class ActivitiesController extends AppController
             }
         }
 
-        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()]];
+        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()], 'order' => ['Clients.name' => 'ASC']];
         $clients = $this->Activities->Clients->find('list', $clientsWhere);
 
-        $activityTypesWhere = ['conditions' => ['ActivityTypes.company_id' => get_company_id()]];
+        $activityTypesWhere = ['conditions' => ['ActivityTypes.company_id' => get_company_id()], 'order' => ['ActivityTypes.name' => 'ASC']];
         $activityTypes = $this->Activities->ActivityTypes->find('list', $activityTypesWhere);
 
         $this->set(compact('activity', 'clients', 'activityTypes'));
@@ -139,10 +139,10 @@ class ActivitiesController extends AppController
             }
         }
         
-        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()]];
+        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()], 'order' => ['Clients.name' => 'ASC']];
         $clients = $this->Activities->Clients->find('list', $clientsWhere);
 
-        $activityTypesWhere = ['conditions' => ['ActivityTypes.company_id' => get_company_id()]];
+        $activityTypesWhere = ['conditions' => ['ActivityTypes.company_id' => get_company_id()], 'order' => ['ActivityTypes.name' => 'ASC']];
         $activityTypes = $this->Activities->ActivityTypes->find('list', $activityTypesWhere);
 
         $this->set(compact('activity', 'clients', 'activityTypes'));

@@ -98,4 +98,9 @@ class ServicesTable extends Table
 
     }
 
+    public function findAll(Query $query, array $options)
+    {
+        return $query->order(['Services.name' => 'ASC']);
+    }
+
 }

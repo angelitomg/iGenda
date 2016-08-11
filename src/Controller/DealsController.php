@@ -54,7 +54,7 @@ class DealsController extends AppController
         // Check if is report
         $deals = ($report == null) ? $this->paginate($query) : $query;
 
-        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()]];
+        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()], 'order' => ['Clients.name' => 'ASC']];
         $clients = $this->Deals->Clients->find('list', $clientsWhere);
         $statusList = $deal->getStatusList();
 
@@ -100,11 +100,11 @@ class DealsController extends AppController
             }
         }
 
-        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()]];
+        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()], 'order' => ['Clients.name' => 'ASC']];
         $clients = $this->Deals->Clients->find('list', $clientsWhere);
 
         $this->loadModel('Services');
-        $servicesWhere = ['conditions' => ['Services.company_id' => get_company_id()]];
+        $servicesWhere = ['conditions' => ['Services.company_id' => get_company_id()], 'order' => ['Services.name' => 'ASC']];
         $services = $this->Services->find('list', $servicesWhere);
         $servicesData = $this->Services->find('all', $servicesWhere);
 
@@ -141,11 +141,11 @@ class DealsController extends AppController
             }
         }
 
-        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()]];
+        $clientsWhere = ['conditions' => ['Clients.company_id' => get_company_id()], 'order' => ['Clients.name' => 'ASC']];
         $clients = $this->Deals->Clients->find('list', $clientsWhere);
 
         $this->loadModel('Services');
-        $servicesWhere = ['conditions' => ['Services.company_id' => get_company_id()]];
+        $servicesWhere = ['conditions' => ['Services.company_id' => get_company_id()], 'order' => ['Services.name' => 'ASC']];
         $services = $this->Services->find('list', $servicesWhere);
         $servicesData = $this->Services->find('all', $servicesWhere);
 

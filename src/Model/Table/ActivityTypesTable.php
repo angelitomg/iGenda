@@ -93,4 +93,9 @@ class ActivityTypesTable extends Table
 
     }
 
+    public function findAll(Query $query, array $options)
+    {
+        return $query->order(['ActivityTypes.name' => 'ASC']);
+    }
+
 }

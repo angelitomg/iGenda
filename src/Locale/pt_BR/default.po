@@ -719,7 +719,7 @@ msgstr "O iGenda é um CRM que veio para tornar sua vida mais fácil. Ele não t
 
 #: Template/Pages/home.ctp:96
 msgid "Some Screenshots"
-msgstr "Algumas Telas"
+msgstr "Veja Mais"
 
 #: Template/Pages/home.ctp:97
 msgid "Sign Up Now"
