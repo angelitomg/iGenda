@@ -175,8 +175,8 @@ msgid "Account successfully activated."
 msgstr "Conta ativada com sucesso."
 
 #: Controller/UsersController.php:360
-msgid "Invalid username or password."
-msgstr "Usuário ou senha incorretos."
+msgid "Invalid username/password or your account is not activated yet."
+msgstr "Usuário/senha incorretos ou sua conta ainda não está ativada."
 
 #: Template/Activities/add.ctp:1
 #: Template/Activities/edit.ctp:1

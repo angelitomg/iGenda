@@ -357,7 +357,7 @@ class UsersController extends AppController
 
             } else {
                 $this->Flash->error(
-                    __('Invalid username or password.'),
+                    __('Invalid username/password or your account is not activated yet.'),
                     'default',
                     [],
                     'auth'
