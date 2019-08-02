@@ -17,6 +17,7 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\I18n\I18n; 
+use Cake\Routing\Router;
 
 /**
  * Application Controller
@@ -45,7 +46,11 @@ class AppController extends Controller
         $lang = $this->_getLang();
         I18n::locale($lang);
 
-        $this->loadComponent('RequestHandler');
+        $this->loadComponent('Security', ['blackHoleCallback' => 'forceSSL']);
+
+        $this->loadComponent('RequestHandler', [
+            'enableBeforeRedirect' => false,
+        ]);
         $this->loadComponent('Flash');
 
         $this->loadComponent('Auth', [
@@ -118,6 +123,28 @@ class AppController extends Controller
             if ($lang == 'en') return 'en_US';
             return 'pt_BR';
         }
+    }
+
+    /**
+     * Before filter callback.
+     *
+     * @param  \Cake\Event\Event $event The beforeFilter event.
+     * @return void
+     */
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Security->requireSecure();
+    }
+
+    /**
+     * Force SSL method.
+     *
+     * @return mixed
+     */
+    public function forceSSL()
+    {
+        return $this->redirect('https://' . env('SERVER_NAME') . Router::url($this->request->getRequestTarget()));
     }
 
 }

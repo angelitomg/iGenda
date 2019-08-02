@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>iGenda - <?= __('The Simplest and Easy CRM in the World') ?></title>
 
-    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145053627-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-145053627-3');
+    </script>
+
 
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="<?= $this->Url->build('/') ?>assets/css/bootstrap.min.css">
